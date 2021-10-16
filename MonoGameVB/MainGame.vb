@@ -8,14 +8,25 @@ End Enum
 Public Class MainGame
     Inherits Game
 
-    Const CELL_WIDTH As Single = 32
-    Const CELL_HEIGHT As Single = 32
+    Const SCREEN_WIDTH = 1280
+    Const SCREEN_HEIGHT = 720
+    Const COLLIDE_DISTANCE = 16
 
     Dim monkPosition As New Vector2(0, 0)
+    Dim beerPosition As Vector2
+    Const monkSpeedPerTick As Single = 0.000025
+    ReadOnly minimumPosition As New Vector2(0, 0)
+    ReadOnly maximumPosition As New Vector2(SCREEN_WIDTH - 32, SCREEN_HEIGHT - 32)
 
     Dim _graphics As GraphicsDeviceManager
     Dim _spriteBatch As SpriteBatch
     Dim _textures As New Dictionary(Of TextureType, Texture2D)
+    Dim _random As New Random()
+
+    Sub SpawnBeer()
+        beerPosition.X = _random.NextDouble() * (maximumPosition.X - minimumPosition.X)
+        beerPosition.Y = _random.NextDouble() * (maximumPosition.Y - minimumPosition.Y)
+    End Sub
 
     Sub New()
         _graphics = New GraphicsDeviceManager(Me)
@@ -24,17 +35,18 @@ Public Class MainGame
     End Sub
 
     Protected Overrides Sub Initialize()
-        _graphics.PreferredBackBufferWidth = 1280
-        _graphics.PreferredBackBufferHeight = 720
+        _graphics.PreferredBackBufferWidth = SCREEN_WIDTH
+        _graphics.PreferredBackBufferHeight = SCREEN_HEIGHT
         _graphics.ApplyChanges()
         MyBase.Initialize()
     End Sub
 
     Protected Overrides Sub LoadContent()
-        Window.Title = "YerMom"
+        Window.Title = "Doing Stuff! In a Monastery!!"
         _spriteBatch = New SpriteBatch(GraphicsDevice)
         _textures(TextureType.BEER) = Texture2D.FromFile(GraphicsDevice, "beer-bottle-32.png")
         _textures(TextureType.MONK) = Texture2D.FromFile(GraphicsDevice, "monk-face-32.png")
+        SpawnBeer()
         MyBase.LoadContent()
     End Sub
 
@@ -46,15 +58,29 @@ Public Class MainGame
         If GamePad.GetState(PlayerIndex.One).Buttons.Back = ButtonState.Pressed OrElse Keyboard.GetState().IsKeyDown(Keys.Escape) Then
             [Exit]()
         ElseIf Keyboard.GetState().IsKeyDown(Keys.Down) Then
-            monkPosition.Y += 1
+            monkPosition.Y += monkSpeedPerTick * gameTime.ElapsedGameTime.Ticks
         ElseIf Keyboard.GetState().IsKeyDown(Keys.Up) Then
-            monkPosition.Y -= 1
+            monkPosition.Y -= monkSpeedPerTick * gameTime.ElapsedGameTime.Ticks
         ElseIf Keyboard.GetState().IsKeyDown(Keys.Right) Then
-            monkPosition.X += 1
+            monkPosition.X += monkSpeedPerTick * gameTime.ElapsedGameTime.Ticks
         ElseIf Keyboard.GetState().IsKeyDown(Keys.Left) Then
-            monkPosition.X -= 1
+            monkPosition.X -= monkSpeedPerTick * gameTime.ElapsedGameTime.Ticks
         End If
-
+        If monkPosition.X < minimumPosition.X Then
+            monkPosition.X = minimumPosition.X
+        End If
+        If monkPosition.Y < minimumPosition.Y Then
+            monkPosition.Y = minimumPosition.Y
+        End If
+        If monkPosition.X > maximumPosition.X Then
+            monkPosition.X = maximumPosition.X
+        End If
+        If monkPosition.Y > maximumPosition.Y Then
+            monkPosition.Y = maximumPosition.Y
+        End If
+        If Vector2.Distance(monkPosition, beerPosition) < COLLIDE_DISTANCE Then
+            SpawnBeer()
+        End If
         MyBase.Update(gameTime)
     End Sub
 
@@ -64,9 +90,8 @@ Public Class MainGame
 
         _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied)
 
-        Dim xy As New Vector2(monkPosition.X * CELL_WIDTH, monkPosition.Y * CELL_HEIGHT)
-
-        _spriteBatch.Draw(_textures(TextureType.MONK), xy, Color.White)
+        _spriteBatch.Draw(_textures(TextureType.BEER), beerPosition, Color.White)
+        _spriteBatch.Draw(_textures(TextureType.MONK), monkPosition, Color.White)
         _spriteBatch.End()
 
         MyBase.Draw(gameTime)
