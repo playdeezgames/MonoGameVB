@@ -6,6 +6,7 @@ Public Class MainGame
 
     Dim _graphics As GraphicsDeviceManager
     Dim _spriteBatch As SpriteBatch
+    Dim _texture As Texture2D
 
     Sub New()
         _graphics = New GraphicsDeviceManager(Me)
@@ -19,6 +20,7 @@ Public Class MainGame
 
     Protected Overrides Sub LoadContent()
         _spriteBatch = New SpriteBatch(GraphicsDevice)
+        _texture = Texture2D.FromFile(GraphicsDevice, "beer-bottle.png")
         MyBase.LoadContent()
     End Sub
 
@@ -40,6 +42,9 @@ Public Class MainGame
 
         _spriteBatch.Begin()
 
+        Dim xy As New Vector2(0, 0)
+
+        _spriteBatch.Draw(_texture, xy, Color.White)
         _spriteBatch.End()
 
         MyBase.Draw(gameTime)
