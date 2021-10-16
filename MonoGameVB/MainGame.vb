@@ -4,6 +4,7 @@ Imports Microsoft.Xna.Framework.Input
 Public Enum TextureType
     BEER
     MONK
+    NUMERALS
 End Enum
 Public Class MainGame
     Inherits Game
@@ -11,9 +12,12 @@ Public Class MainGame
     Const SCREEN_WIDTH = 1280
     Const SCREEN_HEIGHT = 720
     Const COLLIDE_DISTANCE = 16
+    Const NUMERAL_WIDTH = 16
+    Const NUMERAL_HEIGHT = 16
 
     Dim monkPosition As New Vector2(0, 0)
     Dim beerPosition As Vector2
+    Dim score As Integer = 0
     Const monkSpeedPerTick As Single = 0.000025
     ReadOnly minimumPosition As New Vector2(0, 0)
     ReadOnly maximumPosition As New Vector2(SCREEN_WIDTH - 32, SCREEN_HEIGHT - 32)
@@ -46,6 +50,7 @@ Public Class MainGame
         _spriteBatch = New SpriteBatch(GraphicsDevice)
         _textures(TextureType.BEER) = Texture2D.FromFile(GraphicsDevice, "beer-bottle-32.png")
         _textures(TextureType.MONK) = Texture2D.FromFile(GraphicsDevice, "monk-face-32.png")
+        _textures(TextureType.NUMERALS) = Texture2D.FromFile(GraphicsDevice, "numerals.png")
         SpawnBeer()
         MyBase.LoadContent()
     End Sub
@@ -79,9 +84,33 @@ Public Class MainGame
             monkPosition.Y = maximumPosition.Y
         End If
         If Vector2.Distance(monkPosition, beerPosition) < COLLIDE_DISTANCE Then
+            score += 1
             SpawnBeer()
         End If
         MyBase.Update(gameTime)
+    End Sub
+
+    Private ReadOnly numeralTiles As New Dictionary(Of Char, Rectangle) From
+    {
+        {"0"c, New Rectangle(NUMERAL_WIDTH * 0, 0, NUMERAL_WIDTH, NUMERAL_HEIGHT)},
+        {"1"c, New Rectangle(NUMERAL_WIDTH * 1, 0, NUMERAL_WIDTH, NUMERAL_HEIGHT)},
+        {"2"c, New Rectangle(NUMERAL_WIDTH * 2, 0, NUMERAL_WIDTH, NUMERAL_HEIGHT)},
+        {"3"c, New Rectangle(NUMERAL_WIDTH * 3, 0, NUMERAL_WIDTH, NUMERAL_HEIGHT)},
+        {"4"c, New Rectangle(NUMERAL_WIDTH * 4, 0, NUMERAL_WIDTH, NUMERAL_HEIGHT)},
+        {"5"c, New Rectangle(NUMERAL_WIDTH * 5, 0, NUMERAL_WIDTH, NUMERAL_HEIGHT)},
+        {"6"c, New Rectangle(NUMERAL_WIDTH * 6, 0, NUMERAL_WIDTH, NUMERAL_HEIGHT)},
+        {"7"c, New Rectangle(NUMERAL_WIDTH * 7, 0, NUMERAL_WIDTH, NUMERAL_HEIGHT)},
+        {"8"c, New Rectangle(NUMERAL_WIDTH * 8, 0, NUMERAL_WIDTH, NUMERAL_HEIGHT)},
+        {"9"c, New Rectangle(NUMERAL_WIDTH * 9, 0, NUMERAL_WIDTH, NUMERAL_HEIGHT)}
+    }
+
+    Private Sub DrawScore()
+        Dim scoreText = score.ToString()
+        Dim xy As New Vector2(0, 0)
+        For Each character In scoreText
+            _spriteBatch.Draw(_textures(TextureType.NUMERALS), xy, numeralTiles(character), Color.Green)
+            xy.X += NUMERAL_WIDTH
+        Next
     End Sub
 
     Protected Overrides Sub Draw(gameTime As GameTime)
@@ -92,6 +121,8 @@ Public Class MainGame
 
         _spriteBatch.Draw(_textures(TextureType.BEER), beerPosition, Color.White)
         _spriteBatch.Draw(_textures(TextureType.MONK), monkPosition, Color.White)
+        DrawScore()
+
         _spriteBatch.End()
 
         MyBase.Draw(gameTime)
