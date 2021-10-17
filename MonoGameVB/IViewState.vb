@@ -3,7 +3,7 @@
 Public Interface IViewState
     Sub OnLoadContent()
     Sub OnUnloadContent()
-    Function OnCommand(command As Command) As Boolean
+    Function OnCommand(command As Command) As CommandResult
     Sub OnUpdate(elapsed As TimeSpan)
     Sub OnDraw(spriteBatch As SpriteBatch)
 End Interface

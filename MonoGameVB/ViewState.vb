@@ -10,7 +10,12 @@ Public Class ViewState
     End Sub
     Public Sub OnUnloadContent() Implements IViewState.OnUnloadContent
     End Sub
-    Public Function OnCommands(command As Command) As Boolean Implements IViewState.OnCommand
-        Return command <> Command.BACK
+    Public Function OnCommand(command As Command) As CommandResult Implements IViewState.OnCommand
+        Select Case command
+            Case Command.BACK
+                Return CommandResult.HALT
+            Case Else
+                Return CommandResult.PROCEED
+        End Select
     End Function
 End Class
