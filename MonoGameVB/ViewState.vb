@@ -1,21 +1,16 @@
-﻿Imports Microsoft.Xna.Framework
-Imports Microsoft.Xna.Framework.Graphics
-Imports Microsoft.Xna.Framework.Input
+﻿Imports Microsoft.Xna.Framework.Graphics
 
 Public Class ViewState
     Implements IViewState
-    Public Sub HandleLoadContent() Implements IViewState.HandleLoadContent
+    Public Sub OnLoadContent() Implements IViewState.OnLoadContent
     End Sub
-    Public Sub HandleUpdate(gameTime As GameTime) Implements IViewState.HandleUpdate
+    Public Sub OnUpdate(elapsed As TimeSpan) Implements IViewState.OnUpdate
     End Sub
-    Public Sub HandleDraw(spriteBatch As SpriteBatch) Implements IViewState.HandleDraw
+    Public Sub OnDraw(spriteBatch As SpriteBatch) Implements IViewState.OnDraw
     End Sub
-    Public Sub HandleUnloadContent() Implements IViewState.HandleUnloadContent
+    Public Sub OnUnloadContent() Implements IViewState.OnUnloadContent
     End Sub
-    Public Function HandleKeyboard(oldState As KeyboardState, newState As KeyboardState) As Boolean Implements IViewState.HandleKeyboard
-        If newState.IsKeyDown(Keys.Escape) Then
-            Return False
-        End If
-        Return True
+    Public Function OnCommands(command As Command) As Boolean Implements IViewState.OnCommand
+        Return command <> Command.BACK
     End Function
 End Class

@@ -7,7 +7,7 @@ Module Program
         Dim configuration As ApplicationConfiguration = JsonSerializer.Deserialize(Of ApplicationConfiguration)(File.ReadAllText("config/application.json"), New JsonSerializerOptions With {
             .PropertyNameCaseInsensitive = True
         })
-        Using presenter As New Presenter(configuration)
+        Using presenter As New Presenter(configuration, New ViewState())
             presenter.Run()
         End Using
     End Sub

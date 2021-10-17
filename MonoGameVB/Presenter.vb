@@ -8,6 +8,7 @@ Public Class Presenter
     Dim _graphics As GraphicsDeviceManager
     Dim _spriteBatch As SpriteBatch
     Dim _keyboardState As KeyboardState
+    Dim _gamePadState As GamePadState
     Sub New(configuration As ApplicationConfiguration, viewState As IViewState)
         _configuration = configuration
         _viewState = viewState
@@ -21,33 +22,83 @@ Public Class Presenter
         _graphics.IsFullScreen = _configuration.FullScreen
         _graphics.ApplyChanges()
         _keyboardState = Keyboard.GetState()
+        _gamePadState = GamePad.GetState(PlayerIndex.One)
         MyBase.Initialize()
     End Sub
 
     Protected Overrides Sub LoadContent()
         Window.Title = _configuration.Title
         _spriteBatch = New SpriteBatch(GraphicsDevice)
-        _viewState.HandleLoadContent()
+        _viewState.OnLoadContent()
         MyBase.LoadContent()
     End Sub
     Protected Overrides Sub UnloadContent()
-        _viewState.HandleUnloadContent()
+        _viewState.OnUnloadContent()
         MyBase.UnloadContent()
     End Sub
+    Private ReadOnly commandTable As New Dictionary(Of Keys, Command) From
+        {
+            {Keys.F4, Command.BACK},
+            {Keys.F2, Command.START},
+            {Keys.Up, Command.UP},
+            {Keys.Down, Command.DOWN},
+            {Keys.Left, Command.LEFT},
+            {Keys.Right, Command.RIGHT},
+            {Keys.Escape, Command.RED},
+            {Keys.Space, Command.GREEN},
+            {Keys.Enter, Command.BLUE},
+            {Keys.Tab, Command.YELLOW},
+            {Keys.OemPeriod, Command.NEXT},
+            {Keys.OemComma, Command.PREVIOUS}
+        }
+    Private ReadOnly buttonTable As New Dictionary(Of Buttons, Command) From
+        {
+            {Buttons.A, Command.GREEN},
+            {Buttons.B, Command.RED},
+            {Buttons.Back, Command.BACK},
+            {Buttons.DPadDown, Command.DOWN},
+            {Buttons.DPadLeft, Command.LEFT},
+            {Buttons.DPadUp, Command.UP},
+            {Buttons.DPadRight, Command.RIGHT},
+            {Buttons.Start, Command.START},
+            {Buttons.LeftShoulder, Command.PREVIOUS},
+            {Buttons.RightShoulder, Command.NEXT},
+            {Buttons.X, Command.BLUE},
+            {Buttons.Y, Command.YELLOW}
+        }
     Protected Overrides Sub Update(gameTime As GameTime)
+        Dim commands As New HashSet(Of Command)
         Dim keyboardState = Keyboard.GetState()
-        If Not _viewState.HandleKeyboard(_keyboardState, keyboardState) Then
+        For Each entry In commandTable
+            If keyboardState.IsKeyDown(entry.Key) And Not _keyboardState.IsKeyDown(entry.Key) Then
+                commands.Add(entry.Value)
+            End If
+        Next
+        _keyboardState = keyboardState
+        Dim gamePadState = GamePad.GetState(PlayerIndex.One)
+        For Each entry In buttonTable
+            If gamePadState.IsButtonDown(entry.Key) And Not _gamePadState.IsButtonDown(entry.Key) Then
+                commands.Add(entry.Value)
+            End If
+        Next
+        _gamePadState = gamePadState
+        Dim shouldExit As Boolean = False
+        For Each command In commands
+            If Not _viewState.OnCommand(command) Then
+                shouldExit = True
+            End If
+        Next
+        If shouldExit Then
             [Exit]()
         Else
-            _keyboardState = keyboardState
-            _viewState.HandleUpdate(gameTime)
+            _viewState.OnUpdate(gameTime.ElapsedGameTime)
         End If
         MyBase.Update(gameTime)
     End Sub
     Protected Overrides Sub Draw(gameTime As GameTime)
         GraphicsDevice.Clear(Color.Black)
         _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied)
-        _viewState.HandleDraw(_spriteBatch)
+        _viewState.OnDraw(_spriteBatch)
         _spriteBatch.End()
         MyBase.Draw(gameTime)
     End Sub

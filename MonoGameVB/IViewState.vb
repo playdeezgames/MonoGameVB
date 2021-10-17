@@ -1,11 +1,9 @@
-﻿Imports Microsoft.Xna.Framework
-Imports Microsoft.Xna.Framework.Graphics
-Imports Microsoft.Xna.Framework.Input
+﻿Imports Microsoft.Xna.Framework.Graphics
 
 Public Interface IViewState
-    Sub HandleLoadContent()
-    Sub HandleUnloadContent()
-    Function HandleKeyboard(oldState As KeyboardState, newState As KeyboardState) As Boolean
-    Sub HandleUpdate(gameTime As GameTime)
-    Sub HandleDraw(spriteBatch As SpriteBatch)
+    Sub OnLoadContent()
+    Sub OnUnloadContent()
+    Function OnCommand(command As Command) As Boolean
+    Sub OnUpdate(elapsed As TimeSpan)
+    Sub OnDraw(spriteBatch As SpriteBatch)
 End Interface
