@@ -9,6 +9,12 @@ Public Class Presenter
     Dim _spriteBatch As SpriteBatch
     Dim _keyboardState As KeyboardState
     Dim _gamePadState As GamePadState
+    Dim _textureManager As ITextureManager(Of TextureIdentifier)
+    Dim textureSources As New Dictionary(Of TextureIdentifier, String) From
+        {
+            {TextureIdentifier.BACKGROUND, "assets/images/background.png"},
+            {TextureIdentifier.ROM_FONT_8X8, "assets/images/romfont8x8.png"}
+        }
     Sub New(configuration As ApplicationConfiguration, viewState As IViewState)
         _configuration = configuration
         _viewState = viewState
@@ -28,6 +34,7 @@ Public Class Presenter
 
     Protected Overrides Sub LoadContent()
         Window.Title = _configuration.Title
+        _textureManager = New TextureManager(Of TextureIdentifier)(GraphicsDevice, textureSources)
         _spriteBatch = New SpriteBatch(GraphicsDevice)
         _viewState.OnLoadContent()
         MyBase.LoadContent()
@@ -98,6 +105,7 @@ Public Class Presenter
     Protected Overrides Sub Draw(gameTime As GameTime)
         GraphicsDevice.Clear(Color.Black)
         _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied)
+        _spriteBatch.Draw(_textureManager.GetTexture(TextureIdentifier.ROM_FONT_8X8), Vector2.Zero, Color.White)
         _viewState.OnDraw(_spriteBatch)
         _spriteBatch.End()
         MyBase.Draw(gameTime)
