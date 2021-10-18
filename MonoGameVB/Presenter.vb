@@ -31,11 +31,9 @@ Public Class Presenter
         Window.Title = _configuration.Title
         _textureManager = New TextureManager(Of TextureIdentifier)(GraphicsDevice, TextureSources)
         _spriteBatch = New SpriteBatch(GraphicsDevice)
-        _viewState.OnLoadContent()
         MyBase.LoadContent()
     End Sub
     Protected Overrides Sub UnloadContent()
-        _viewState.OnUnloadContent()
         MyBase.UnloadContent()
     End Sub
     Private Sub AccumulateKeyCommands(ByRef commands As HashSet(Of Command))
