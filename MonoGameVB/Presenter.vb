@@ -4,13 +4,13 @@ Imports Microsoft.Xna.Framework.Input
 Public Class Presenter
     Inherits Game
     Dim _configuration As ApplicationConfiguration
-    Dim _viewState As IViewState
+    Dim _viewState As IView
     Dim _graphics As GraphicsDeviceManager
     Dim _spriteBatch As SpriteBatch
     Dim _keyboardState As KeyboardState
     Dim _gamePadState As GamePadState
     Dim _textureManager As ITextureManager(Of TextureIdentifier)
-    Sub New(configuration As ApplicationConfiguration, viewState As IViewState)
+    Sub New(configuration As ApplicationConfiguration, viewState As IView)
         _configuration = configuration
         _viewState = viewState
         _graphics = New GraphicsDeviceManager(Me)

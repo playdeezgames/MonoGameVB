@@ -2,12 +2,13 @@ Imports System.IO
 Imports System.Text.Json
 
 Module Program
+    Private Const CONFIG_FILE_NAME As String = "config/application.json"
     <STAThread>
     Sub Main(args As String())
-        Dim configuration As ApplicationConfiguration = JsonSerializer.Deserialize(Of ApplicationConfiguration)(File.ReadAllText("config/application.json"), New JsonSerializerOptions With {
+        Dim configuration As ApplicationConfiguration = JsonSerializer.Deserialize(Of ApplicationConfiguration)(File.ReadAllText(CONFIG_FILE_NAME), New JsonSerializerOptions With {
             .PropertyNameCaseInsensitive = True
         })
-        Using presenter As New Presenter(configuration, New ViewState())
+        Using presenter As New Presenter(configuration, New MainView())
             presenter.Run()
         End Using
     End Sub
