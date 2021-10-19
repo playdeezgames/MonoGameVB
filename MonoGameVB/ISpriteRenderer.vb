@@ -1,6 +1,8 @@
-﻿Public Interface ISpriteRenderer(
-                                Of TSpriteIdentifier,
-                                    THueIdentifier)
+﻿Imports Common
+
+Public Interface ISpriteRenderer(
+                   Of TSpriteIdentifier,
+                       THueIdentifier)
     Sub Draw(
             spriteIdentifier As TSpriteIdentifier,
             position As XY(Of Integer),

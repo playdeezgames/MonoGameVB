@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.vbproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="assets\images\background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

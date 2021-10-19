@@ -3,14 +3,16 @@ Imports Microsoft.Xna.Framework.Graphics
 Imports Microsoft.Xna.Framework.Input
 Public Class Presenter
     Inherits Game
-    Dim _configuration As ApplicationConfiguration
-    Dim _viewState As IView
-    Dim _graphics As GraphicsDeviceManager
-    Dim _spriteBatch As SpriteBatch
-    Dim _keyboardState As KeyboardState
-    Dim _gamePadState As GamePadState
-    Dim _textureManager As ITextureManager(Of TextureIdentifier)
-    Sub New(configuration As ApplicationConfiguration, viewState As IView)
+    Private _configuration As ApplicationConfiguration
+    Private _viewState As IView(Of SpriteIdentifier, HueIdentifier)
+    Private _spriteRenderer As ISpriteRenderer(Of SpriteIdentifier, HueIdentifier)
+    Private _graphics As GraphicsDeviceManager
+    Private _spriteBatch As SpriteBatch
+    Private _keyboardState As KeyboardState
+    Private _gamePadState As GamePadState
+    Private _textureManager As ITextureManager(Of TextureIdentifier)
+    Private _spriteManager As ISpriteManager(Of SpriteIdentifier, TextureIdentifier)
+    Sub New(configuration As ApplicationConfiguration, viewState As IView(Of SpriteIdentifier, HueIdentifier))
         _configuration = configuration
         _viewState = viewState
         _graphics = New GraphicsDeviceManager(Me)
@@ -31,6 +33,8 @@ Public Class Presenter
         Window.Title = _configuration.Title
         _textureManager = New TextureManager(Of TextureIdentifier)(GraphicsDevice, TextureSources)
         _spriteBatch = New SpriteBatch(GraphicsDevice)
+        _spriteManager = New SpriteManager(Of SpriteIdentifier, TextureIdentifier)(SpriteSources)
+        _spriteRenderer = New SpriteRenderer(_textureManager, _spriteManager, HueSources, _spriteBatch)
         MyBase.LoadContent()
     End Sub
     Protected Overrides Sub UnloadContent()
@@ -74,9 +78,8 @@ Public Class Presenter
     End Sub
     Protected Overrides Sub Draw(gameTime As GameTime)
         GraphicsDevice.Clear(Color.Black)
-        _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied)
-        _spriteBatch.Draw(_textureManager.GetTexture(TextureIdentifier.ROM_FONT_8X8), Vector2.Zero, Color.White)
-        _viewState.OnDraw(_spriteBatch)
+        _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.PointClamp)
+        _viewState.OnDraw(_spriteRenderer)
         _spriteBatch.End()
         MyBase.Draw(gameTime)
     End Sub

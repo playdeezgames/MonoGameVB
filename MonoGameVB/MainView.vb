@@ -1,12 +1,13 @@
-﻿Imports Microsoft.Xna.Framework.Graphics
+﻿Imports Common
 
 Public Class MainView
-    Implements IView
-    Public Sub OnUpdate(elapsed As TimeSpan) Implements IView.OnUpdate
+    Implements IView(Of SpriteIdentifier, HueIdentifier)
+    Public Sub OnUpdate(elapsed As TimeSpan) Implements IView(Of SpriteIdentifier, HueIdentifier).OnUpdate
     End Sub
-    Public Sub OnDraw(spriteBatch As SpriteBatch) Implements IView.OnDraw
+    Public Sub OnDraw(spriteRenderer As ISpriteRenderer(Of SpriteIdentifier, HueIdentifier)) Implements IView(Of SpriteIdentifier, HueIdentifier).OnDraw
+        spriteRenderer.Draw(SpriteIdentifier.CHARACTER_40, New XY(Of Integer)(0, 0), HueIdentifier.RED)
     End Sub
-    Public Function OnCommand(command As Command) As CommandResult Implements IView.OnCommand
+    Public Function OnCommand(command As Command) As CommandResult Implements IView(Of SpriteIdentifier, HueIdentifier).OnCommand
         Select Case command
             Case Command.BACK
                 Return CommandResult.HALT
