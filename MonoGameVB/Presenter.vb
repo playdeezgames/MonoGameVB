@@ -56,23 +56,26 @@
         _gamePadState = gamePadState
     End Sub
     Protected Overrides Sub Update(gameTime As GameTime)
+        If ProcessInputs() Then
+            _viewState.OnUpdate(gameTime.ElapsedGameTime)
+            MyBase.Update(gameTime)
+            Return
+        End If
+        [Exit]()
+    End Sub
+
+    Private Function ProcessInputs() As Boolean
         Dim commands As New HashSet(Of Command)
         AccumulateKeyCommands(commands)
         AccumulateGamePadCommands(commands)
-        Dim shouldExit As Boolean = False
         For Each command In commands
             If _viewState.OnCommand(command) = CommandResult.HALT Then
-                shouldExit = True
-                Exit For
+                Return False
             End If
         Next
-        If shouldExit Then
-            [Exit]()
-        Else
-            _viewState.OnUpdate(gameTime.ElapsedGameTime)
-        End If
-        MyBase.Update(gameTime)
-    End Sub
+        Return True
+    End Function
+
     Protected Overrides Sub Draw(gameTime As GameTime)
         GraphicsDevice.Clear(Color.Black)
         _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.PointClamp)

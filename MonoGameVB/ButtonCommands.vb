@@ -1,6 +1,4 @@
-﻿Imports Microsoft.Xna.Framework.Input
-
-Module ButtonCommands
+﻿Friend Module ButtonCommands
     Friend ReadOnly ButtonTable As New Dictionary(Of Buttons, Command) From
         {
             {Buttons.A, Command.GREEN},

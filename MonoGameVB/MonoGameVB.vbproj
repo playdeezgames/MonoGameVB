@@ -6,7 +6,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <StartupObject>MonoGameVB.Program</StartupObject>
     <OptionStrict>On</OptionStrict>
-    <ImportedNamespaces>Microsoft.Xna.Framework=False,Microsoft.Xna.Framework.Graphics=False,Microsoft.Xna.Framework.Input=False,System.IO=False,System.Text.Json=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,MonoGameVB=True</ImportedNamespaces>
+    <ImportedNamespaces>Common=False,Microsoft.Xna.Framework=False,Microsoft.Xna.Framework.Graphics=False,Microsoft.Xna.Framework.Input=False,System.IO=False,System.Text.Json=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,MonoGameVB=True</ImportedNamespaces>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -38,6 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Import Include="Common" />
     <Import Include="Microsoft.Xna.Framework" />
     <Import Include="Microsoft.Xna.Framework.Graphics" />
     <Import Include="Microsoft.Xna.Framework.Input" />

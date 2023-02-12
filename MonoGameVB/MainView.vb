@@ -1,6 +1,4 @@
-﻿Imports Common
-
-Public Class MainView
+﻿Public Class MainView
     Implements IView(Of SpriteIdentifier, HueIdentifier)
     Public Sub OnUpdate(elapsed As TimeSpan) Implements IView(Of SpriteIdentifier, HueIdentifier).OnUpdate
     End Sub

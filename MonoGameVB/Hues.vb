@@ -1,6 +1,4 @@
-﻿Imports Microsoft.Xna.Framework
-
-Module Hues
+﻿Module Hues
     Public HueSources As New Dictionary(Of HueIdentifier, Color) From
         {
             {HueIdentifier.WHITE, Color.White},
