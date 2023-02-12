@@ -1,12 +1,9 @@
-﻿Imports Microsoft.Xna.Framework
-Imports Microsoft.Xna.Framework.Graphics
-Imports Microsoft.Xna.Framework.Input
-Public Class Presenter
+﻿Public Class Presenter
     Inherits Game
-    Private _configuration As ApplicationConfiguration
-    Private _viewState As IView(Of SpriteIdentifier, HueIdentifier)
+    Private ReadOnly _configuration As ApplicationConfiguration
+    Private ReadOnly _viewState As IView(Of SpriteIdentifier, HueIdentifier)
     Private _spriteRenderer As ISpriteRenderer(Of SpriteIdentifier, HueIdentifier)
-    Private _graphics As GraphicsDeviceManager
+    Private ReadOnly _graphics As GraphicsDeviceManager
     Private _spriteBatch As SpriteBatch
     Private _keyboardState As KeyboardState
     Private _gamePadState As GamePadState

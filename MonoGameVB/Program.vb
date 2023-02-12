@@ -1,6 +1,3 @@
-Imports System.IO
-Imports System.Text.Json
-
 Module Program
     Private Const CONFIG_FILE_NAME As String = "config/application.json"
     <STAThread>
