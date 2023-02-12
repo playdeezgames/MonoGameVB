@@ -3,8 +3,9 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <RootNamespace>MonoGameVB</RootNamespace>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <StartupObject>MonoGameVB.Program</StartupObject>
+    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
 
   <ItemGroup>
