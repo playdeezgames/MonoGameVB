@@ -1,6 +1,4 @@
-﻿Imports Common
-
-Module Sprites
+﻿Friend Module Sprites
     Friend ReadOnly SpriteSources As New Dictionary(Of SpriteIdentifier, Sprite(Of TextureIdentifier)) From
         {
             {SpriteIdentifier.BACKGROUND, New Sprite(Of TextureIdentifier)(TextureIdentifier.BACKGROUND, New XY(Of Integer)(0, 0), New XY(Of UInteger)(1280, 720), New XY(Of Integer)(0, 0))},

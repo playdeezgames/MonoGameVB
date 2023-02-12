@@ -1,5 +1,3 @@
-﻿Imports Microsoft.Xna.Framework.Graphics
-
-Public Interface ITextureManager(Of TIdentifier)
+﻿Friend Interface ITextureManager(Of TIdentifier)
     Function GetTexture(identifier As TIdentifier) As Texture2D
 End Interface

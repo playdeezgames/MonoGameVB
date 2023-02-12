@@ -1,6 +1,4 @@
-﻿Imports Common
-
-Public Interface ISpriteRenderer(
+﻿Public Interface ISpriteRenderer(
                    Of TSpriteIdentifier,
                        THueIdentifier)
     Sub Draw(

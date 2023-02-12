@@ -1,4 +1,4 @@
-﻿Module Textures
+﻿Friend Module Textures
     Friend ReadOnly TextureSources As New Dictionary(Of TextureIdentifier, String) From
         {
             {TextureIdentifier.BACKGROUND, "assets/images/background.png"},

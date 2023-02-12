@@ -1,4 +1,4 @@
-﻿Public Enum TextureIdentifier
+﻿Friend Enum TextureIdentifier
     BACKGROUND
     ROM_FONT_8X8
 End Enum

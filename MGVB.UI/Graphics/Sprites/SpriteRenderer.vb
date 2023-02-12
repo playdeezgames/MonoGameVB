@@ -1,8 +1,4 @@
-﻿Imports Common
-Imports Microsoft.Xna.Framework
-Imports Microsoft.Xna.Framework.Graphics
-
-Public Class SpriteRenderer
+﻿Friend Class SpriteRenderer
     Implements ISpriteRenderer(Of SpriteIdentifier, HueIdentifier)
 
     Private _textureManager As ITextureManager(Of TextureIdentifier)

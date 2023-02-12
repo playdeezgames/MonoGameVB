@@ -1,4 +1,4 @@
-﻿Public Class SpriteManager(Of TSpriteIdentifier, TTextureIdentifier)
+﻿Friend Class SpriteManager(Of TSpriteIdentifier, TTextureIdentifier)
     Implements ISpriteManager(Of TSpriteIdentifier, TTextureIdentifier)
 
     Private _table As Dictionary(Of TSpriteIdentifier, Sprite(Of TTextureIdentifier))

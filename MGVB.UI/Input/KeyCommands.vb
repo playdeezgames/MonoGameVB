@@ -1,4 +1,4 @@
-﻿Module KeyCommands
+﻿Friend Module KeyCommands
     Friend ReadOnly CommandsTable As New Dictionary(Of Keys, Command) From
         {
             {Keys.F4, Command.BACK},
