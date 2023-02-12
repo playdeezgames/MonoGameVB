@@ -6,7 +6,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <StartupObject>MonoGameVB.Program</StartupObject>
     <OptionStrict>On</OptionStrict>
-    <ImportedNamespaces>Common=False,Microsoft.Xna.Framework=False,Microsoft.Xna.Framework.Graphics=False,Microsoft.Xna.Framework.Input=False,System.IO=False,System.Text.Json=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,MonoGameVB=True</ImportedNamespaces>
+    <ImportedNamespaces>Common=False,MGVB.UI=False,Microsoft.Xna.Framework=False,Microsoft.Xna.Framework.Graphics=False,Microsoft.Xna.Framework.Input=False,System.IO=False,System.Text.Json=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,MonoGameVB=True</ImportedNamespaces>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -16,14 +16,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.vbproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Update="assets\images\background.png">
@@ -39,11 +31,16 @@
 
   <ItemGroup>
     <Import Include="Common" />
+    <Import Include="MGVB.UI" />
     <Import Include="Microsoft.Xna.Framework" />
     <Import Include="Microsoft.Xna.Framework.Graphics" />
     <Import Include="Microsoft.Xna.Framework.Input" />
     <Import Include="System.IO" />
     <Import Include="System.Text.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MGVB.UI\MGVB.UI.vbproj" />
   </ItemGroup>
 
 </Project>
