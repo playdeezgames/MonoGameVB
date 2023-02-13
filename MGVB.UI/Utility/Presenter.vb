@@ -8,7 +8,7 @@
     Private _keyboardState As KeyboardState
     Private _gamePadState As GamePadState
     Private _textureManager As ITextureManager(Of TextureIdentifier)
-    Private _spriteManager As ISpriteManager(Of SpriteIdentifier, TextureIdentifier)
+    Private _spriteManager As ISpriteManager(Of SpriteIdentifier)
     Sub New(configuration As ApplicationConfiguration, viewState As IView(Of SpriteIdentifier, HueIdentifier))
         _configuration = configuration
         _viewState = viewState
