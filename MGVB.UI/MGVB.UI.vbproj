@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <RootNamespace>MGVB.UI</RootNamespace>
@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common.UI\Common.UI.vbproj" />
+    <ProjectReference Include="..\MGVB.Business\MGVB.Business.vbproj" />
   </ItemGroup>
 
   <ItemGroup>
