@@ -1,4 +1,5 @@
 ﻿Public Class ScreenConfiguration
-    Property Width As Integer
-    Property Height As Integer
+    Implements IScreenConfiguration
+    Property Width As Integer Implements IScreenConfiguration.Width
+    Property Height As Integer Implements IScreenConfiguration.Height
 End Class
