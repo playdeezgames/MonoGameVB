@@ -1,7 +1,7 @@
 ﻿Public Class Presenter
     Inherits Game
     Private ReadOnly _configuration As ApplicationConfiguration
-    Private ReadOnly _viewState As IView(Of SpriteIdentifier, HueIdentifier)
+    Private ReadOnly _viewState As IView(Of SpriteIdentifier, HueIdentifier, Command)
     Private _spriteRenderer As ISpriteRenderer(Of SpriteIdentifier, HueIdentifier)
     Private ReadOnly _graphics As GraphicsDeviceManager
     Private _spriteBatch As SpriteBatch
@@ -9,7 +9,7 @@
     Private _gamePadState As GamePadState
     Private _textureManager As ITextureManager(Of TextureIdentifier)
     Private _spriteManager As ISpriteManager(Of SpriteIdentifier)
-    Sub New(configuration As ApplicationConfiguration, viewState As IView(Of SpriteIdentifier, HueIdentifier))
+    Sub New(configuration As ApplicationConfiguration, viewState As IView(Of SpriteIdentifier, HueIdentifier, Command))
         _configuration = configuration
         _viewState = viewState
         _graphics = New GraphicsDeviceManager(Me)
