@@ -31,7 +31,7 @@
         _textureManager = New TextureManager(Of TextureIdentifier)(GraphicsDevice, TextureSources)
         _spriteBatch = New SpriteBatch(GraphicsDevice)
         _spriteManager = New SpriteManager(Of SpriteIdentifier, TextureIdentifier)(SpriteSources)
-        _spriteRenderer = New SpriteRenderer(_textureManager, _spriteManager, HueSources, _spriteBatch)
+        _spriteRenderer = New SpriteRenderer(Of SpriteIdentifier, HueIdentifier, TextureIdentifier)(_textureManager, _spriteManager, HueSources, _spriteBatch)
         MyBase.LoadContent()
     End Sub
     Protected Overrides Sub UnloadContent()

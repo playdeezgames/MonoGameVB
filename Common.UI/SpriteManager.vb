@@ -1,9 +1,9 @@
-﻿Friend Class SpriteManager(Of TSpriteIdentifier, TTextureIdentifier)
+﻿Public Class SpriteManager(Of TSpriteIdentifier, TTextureIdentifier)
     Implements ISpriteManager(Of TSpriteIdentifier)
 
-    Private _table As Dictionary(Of TSpriteIdentifier, Sprite(Of TTextureIdentifier))
+    Private _table As Dictionary(Of TSpriteIdentifier, ISprite)
 
-    Public Sub New(source As Dictionary(Of TSpriteIdentifier, Sprite(Of TTextureIdentifier)))
+    Public Sub New(source As Dictionary(Of TSpriteIdentifier, ISprite))
         _table = source
     End Sub
 

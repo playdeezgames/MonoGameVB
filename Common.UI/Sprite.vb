@@ -1,4 +1,4 @@
-﻿Friend Class Sprite(Of TTextureIdentifier)
+﻿Public Class Sprite(Of TTextureIdentifier)
     Implements ISprite
     Private ReadOnly _textureIdentifier As TTextureIdentifier
     Private ReadOnly _source As XY(Of Integer)
