@@ -1,4 +1,4 @@
-﻿Public Class MainView
+﻿Friend Class MainView
     Implements IView(Of SpriteIdentifier, HueIdentifier, Command)
     Public Sub OnUpdate(elapsed As TimeSpan) Implements IView(Of SpriteIdentifier, HueIdentifier, Command).OnUpdate
     End Sub
