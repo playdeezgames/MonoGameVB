@@ -1,5 +1,5 @@
-﻿Friend Module Sprites
-    Friend ReadOnly SpriteSources As New Dictionary(Of SpriteIdentifier, ISprite) From
+﻿Public Module Sprites
+    Public ReadOnly SpriteSources As New Dictionary(Of SpriteIdentifier, ISprite) From
         {
             {SpriteIdentifier.BACKGROUND, New Sprite(Of TextureIdentifier)(TextureIdentifier.BACKGROUND, New XY(Of Integer)(0, 0), New XY(Of UInteger)(1280, 720), New XY(Of Integer)(0, 0))},
             {SpriteIdentifier.CHARACTER_00, New Sprite(Of TextureIdentifier)(TextureIdentifier.ROM_FONT_8X8, New XY(Of Integer)(0, 0), New XY(Of UInteger)(8, 8), New XY(Of Integer)(0, 0))},

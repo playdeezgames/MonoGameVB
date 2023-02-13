@@ -3,14 +3,14 @@
 
     Private ReadOnly _textureManager As ITextureManager(Of TTextureIdentifier)
     Private ReadOnly _spriteManager As ISpriteManager(Of TSpriteIdentifier)
-    Private ReadOnly _hues As Dictionary(Of THueIdentifier, Color)
+    Private ReadOnly _hues As IReadOnlyDictionary(Of THueIdentifier, Color)
     Private ReadOnly _spriteBatch As SpriteBatch
     Private ReadOnly _scale As Integer = 4
 
     Public Sub New(
                   textureManager As ITextureManager(Of TTextureIdentifier),
                   spriteManager As ISpriteManager(Of TSpriteIdentifier),
-                  hues As Dictionary(Of THueIdentifier, Color),
+                  hues As IReadOnlyDictionary(Of THueIdentifier, Color),
                   spriteBatch As SpriteBatch)
         _textureManager = textureManager
         _spriteBatch = spriteBatch

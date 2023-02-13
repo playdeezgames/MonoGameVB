@@ -4,7 +4,7 @@
     <RootNamespace>Common.UI</RootNamespace>
     <TargetFramework>net6.0</TargetFramework>
     <OptionStrict>On</OptionStrict>
-    <ImportedNamespaces>Microsoft.Xna.Framework=False,Microsoft.Xna.Framework.Graphics=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,Common.UI=True</ImportedNamespaces>
+    <ImportedNamespaces>Microsoft.Xna.Framework=False,Microsoft.Xna.Framework.Graphics=False,Microsoft.Xna.Framework.Input=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,Common.UI=True</ImportedNamespaces>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -30,6 +30,7 @@
   <ItemGroup>
     <Import Include="Microsoft.Xna.Framework" />
     <Import Include="Microsoft.Xna.Framework.Graphics" />
+    <Import Include="Microsoft.Xna.Framework.Input" />
   </ItemGroup>
 
 </Project>

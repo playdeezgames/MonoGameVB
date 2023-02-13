@@ -1,10 +1,10 @@
 ﻿Public Class TextureManager(Of TIdentifier)
     Implements ITextureManager(Of TIdentifier)
     Private _table As New Dictionary(Of TIdentifier, Texture2D)
-    Private _sourceTable As Dictionary(Of TIdentifier, String)
+    Private _sourceTable As IReadOnlyDictionary(Of TIdentifier, String)
     Private ReadOnly _graphicsDevice As GraphicsDevice
 
-    Public Sub New(graphicsDevice As GraphicsDevice, sourceTable As Dictionary(Of TIdentifier, String))
+    Public Sub New(graphicsDevice As GraphicsDevice, sourceTable As IReadOnlyDictionary(Of TIdentifier, String))
         _graphicsDevice = graphicsDevice
         _sourceTable = sourceTable
     End Sub

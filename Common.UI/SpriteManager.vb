@@ -1,9 +1,9 @@
 ﻿Public Class SpriteManager(Of TSpriteIdentifier, TTextureIdentifier)
     Implements ISpriteManager(Of TSpriteIdentifier)
 
-    Private _table As Dictionary(Of TSpriteIdentifier, ISprite)
+    Private ReadOnly _table As IReadOnlyDictionary(Of TSpriteIdentifier, ISprite)
 
-    Public Sub New(source As Dictionary(Of TSpriteIdentifier, ISprite))
+    Public Sub New(source As IReadOnlyDictionary(Of TSpriteIdentifier, ISprite))
         _table = source
     End Sub
 

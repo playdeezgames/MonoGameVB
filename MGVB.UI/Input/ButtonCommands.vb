@@ -1,5 +1,5 @@
-﻿Friend Module ButtonCommands
-    Friend ReadOnly ButtonTable As New Dictionary(Of Buttons, Command) From
+﻿Public Module ButtonCommands
+    Public ReadOnly ButtonTable As New Dictionary(Of Buttons, Command) From
         {
             {Buttons.A, Command.GREEN},
             {Buttons.B, Command.RED},
