@@ -1,6 +1,8 @@
 1 CLS:A$=STRING$(32,140):PRINT@320,CHR$(23)A$"        SOFTSIDE Presents":PRINTA$TAB(8)CHR$(34)"ALIEN"CHR$(34)" Adventure":PRINTA$"     WRITTEN By Alan J. Zett":PRINTA$:CLEAR200:DEFINTA-Z
 10 A$="":NO$="":VB$="":CH$=CHR$(30):Q=-1:V=0:PR=V:AS=Q:SA=Q:HA=Q:N=V:AO=Q:TS=V:SO=Q:OL=V:PD=Q:PP=Q:RE=Q:RD=Q:FS=9:OC=V:RO=V:AR=V:LP=Q:TC=V:TMP=V:A=V:RF=Q:DF=Q:TH=Q:RC=Q:H1=Q:H2=Q:SL=Q:SC=Q:R=1:Z=V:L=V:I=640:GOTO1000
+
 20 PRINTM3$:GOTO140
+
 30 CLS:PRINT"I'm "RM$(R):A$=""
 40 IFTH=0THENIFOB(1,2)>0THENOB(1,2)=15:OB(40,2)=11:TH=1:ELSEOB(40,2)=11
 50 Z=-1:RO=0:FORA=1TOOB:IFOB(A,2)=RTHENRO=RO+1:ELSE90
@@ -86,6 +88,7 @@
 790 IFAS=-1ANDAR<>RTHENAR=RND(38):GOTO800:ELSE810
 800 IFAR=7OR(AR>17ANDAR<27)ORAR=28ORAR=29IFRND(4)=1THEN780:ELSEAR=0:RETURN:ELSEOB(5,2)=AR:FORA=0TO5:IFRM(R,A)<>ARTHENNEXTA:RETURN
 810 AS=0:AR=PR:OB(5,2)=AR:IFOB(6,2)=ROROB(6,2)=-1THENPRINT@704,"A warning light on the tracker is FLASHING!":RETURN:ELSERETURN
+
 1000 RM=38:DIMRM$(RM)
 1010 RM$(1)="in the hyper-sleep chamber of the NOSTROMO
 1020 DATA0,0,0,9,0,0
@@ -139,6 +142,7 @@
 1500 RM$(37)="in the MAIN COMPUTER room":DATA0,27,0,0,0,0
 1510 RM$(38)="in a UTILITY closet":DATA0,0,0,34,0,0
 1520 DIMRM(RM,5):FORA=1TORM:FORB=0TO5:READC:RM(A,B)=C:NEXTB,A
+
 2000 NO=44:DIMNO$(NO)
 2010 NO$(1)="NORTH":NO$(2)="SOUTH":NO$(3)="EAST":NO$(4)="WEST"
 2020 NO$(5)="UP":NO$(6)="DOWN":NO$(7)="CAT":NO$(8)="ALI"
@@ -151,6 +155,7 @@
 2090 NO$(33)="SHO":NO$(34)="WIN":NO$(35)="ROP":NO$(36)="CON"
 2100 NO$(37)="PAC":NO$(38)="HAT":NO$(39)="BOO":NO$(40)="JEW"
 2110 NO$(41)="EXP":NO$(42)="MAP":NO$(43)="DIA":NO$(44)="TEL"
+
 3000 VB=34:DIMVB$(VB)
 3010 VB$(1)="N":VB$(2)="S":VB$(3)="E":VB$(4)="W":VB$(5)="U"
 3020 VB$(6)="D":VB$(7)="CON":VB$(8)="DRO":VB$(9)="SUI"
@@ -161,6 +166,7 @@
 3070 VB$(26)="DIG":VB$(27)="STA"::VB$(28)="HEL":VB$(29)="SCO"
 3080 VB$(30)="QUI":VB$(31)="FIR":VB$(32)="TAK":VB$(33)="PUT"
 3090 VB$(34)="ENT"
+
 4000 OB=41:DIMOB$(OB)
 4010 OB$(1)="CAT":OB$(2)="HYPER-SLEEP POD":OB$(3)="LADDER"
 4020 DATA10,7,0,0,9,1,0,15,36
@@ -196,12 +202,15 @@
 4320 OB$(41)="AUTOMATIC HATCH":OB$(37)=OB$(36)
 4330 DATA0,34,10,0,25,34,0,25,0,0,18,26,0,18,0,0,18,0,0,45,31
 4340 DIMOB(OB,2):FORA=1TOOB:FORB=0TO2:READC:OB(A,B)=C:NEXTB,A
+
 5000 M0$="I don't see it here!":M1$="I can't go that way!"
 5010 M2$="I don't understand what you mean!"
 5020 M3$="I can't do that... YET!":M5$="I'm carrying:"
 5030 M4$="I can't carry any more! DROP something!"
 5040 M6$="I can't go anywhere with the ROPE attached to me!"
 5050 M7$="I'm not carrying it!":M8$="The cat scrambled for the exit!":M9$="There's no room left to DROP anything!"
+
 5060 N0$="I see nothing special":N1$="Nothing happened"
 5070 N2$="There's a warning light on it"
+
 5080 CLS:PRINT@512,"Skill Level: 1=Advanced, 2=Average, 3=Beginner ";:INPUTL:IFL>3THEN5080:ELSEOL=80*L:GOTO30

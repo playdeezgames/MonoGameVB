@@ -3,7 +3,13 @@
     Public Sub OnUpdate(elapsed As TimeSpan) Implements IView(Of SpriteIdentifier, HueIdentifier, Command).OnUpdate
     End Sub
     Public Sub OnDraw(spriteRenderer As ISpriteRenderer(Of SpriteIdentifier, HueIdentifier)) Implements IView(Of SpriteIdentifier, HueIdentifier, Command).OnDraw
-        spriteRenderer.Draw(SpriteIdentifier.CHARACTER_40, New XY(Of Integer)(0, 0), HueIdentifier.RED)
+        Dim text = "SOFTSIDE Presents"
+        Dim x = 0
+        Dim y = 0
+        For Each c In text
+            spriteRenderer.Draw(LetterSource(c), New XY(Of Integer)(x, y), HueIdentifier.RED)
+            x += 8
+        Next
     End Sub
     Public Function OnCommand(command As Command) As CommandResult Implements IView(Of SpriteIdentifier, HueIdentifier, Command).OnCommand
         Select Case command
