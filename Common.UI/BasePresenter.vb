@@ -1,4 +1,4 @@
-﻿Public Class Presenter(Of TSpriteIdentifier, THueIdentifier, TTextureIdentifier, TCommand)
+﻿Public Class BasePresenter(Of TSpriteIdentifier, THueIdentifier, TTextureIdentifier, TCommand)
     Inherits Game
     Private ReadOnly _configuration As IApplicationConfiguration
     Private ReadOnly _viewState As IView(Of TSpriteIdentifier, THueIdentifier, TCommand)
