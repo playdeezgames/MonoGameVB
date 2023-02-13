@@ -1,4 +1,4 @@
-﻿Friend Class TextureManager(Of TIdentifier)
+﻿Public Class TextureManager(Of TIdentifier)
     Implements ITextureManager(Of TIdentifier)
     Private _table As New Dictionary(Of TIdentifier, Texture2D)
     Private _sourceTable As Dictionary(Of TIdentifier, String)
