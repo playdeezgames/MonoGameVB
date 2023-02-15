@@ -3,6 +3,79 @@
     Private Data As WorldData
     Sub New()
         Data = New WorldData
+        InitializeRooms()
+        InitializeNouns()
+    End Sub
+
+    Private Sub InitializeNouns()
+        '2010 NO$(1)="NORTH":NO$(2) = "SOUTH" : NO$(3) = "EAST" : NO$(4) = "WEST"
+        Data.Nouns(NounIdentifier.Noun1) = "NORTH"
+        Data.Nouns(NounIdentifier.Noun2) = "SOUTH"
+        Data.Nouns(NounIdentifier.Noun3) = "EAST"
+        Data.Nouns(NounIdentifier.Noun4) = "WEST"
+
+        '2020 NO$(5)="UP":NO$(6) = "DOWN" : NO$(7) = "CAT" : NO$(8) = "ALI"
+        Data.Nouns(NounIdentifier.Noun5) = "UP"
+        Data.Nouns(NounIdentifier.Noun6) = "DOWN"
+        Data.Nouns(NounIdentifier.Noun7) = "CAT"
+        Data.Nouns(NounIdentifier.Noun8) = "ALI"
+
+        '2030 NO$(9)="POD":NO$(10) = "SKE" : NO$(11) = "TRA" : NO$(12) = "TAB"
+        Data.Nouns(NounIdentifier.Noun9) = "POD"
+        Data.Nouns(NounIdentifier.Noun10) = "SKE"
+        Data.Nouns(NounIdentifier.Noun11) = "TRA"
+        Data.Nouns(NounIdentifier.Noun12) = "TAB"
+
+        '2040 NO$(13)="OVO":NO$(14) = "MIC" : NO$(15) = "LAD" : NO$(16) = "LEV"
+        Data.Nouns(NounIdentifier.Noun13) = "OVO"
+        Data.Nouns(NounIdentifier.Noun14) = "MIC"
+        Data.Nouns(NounIdentifier.Noun15) = "LAD"
+        Data.Nouns(NounIdentifier.Noun16) = "LEV"
+
+        '2050 NO$(17)="BUT":NO$(18) = "HOL" : NO$(19) = "SHU" : NO$(20) = "LOC"
+        Data.Nouns(NounIdentifier.Noun17) = "BUT"
+        Data.Nouns(NounIdentifier.Noun18) = "HOL"
+        Data.Nouns(NounIdentifier.Noun19) = "SHU"
+        Data.Nouns(NounIdentifier.Noun20) = "LOC"
+
+        '2060 NO$(21)="FLA":NO$(22) = "PLA" : NO$(23) = "OXY" : NO$(24) = "FUE"
+        Data.Nouns(NounIdentifier.Noun21) = "FLA"
+        Data.Nouns(NounIdentifier.Noun22) = "PLA"
+        Data.Nouns(NounIdentifier.Noun23) = "OXY"
+        Data.Nouns(NounIdentifier.Noun24) = "FUE"
+
+        '2070 NO$(25)="CLO":NO$(26) = "FOO" : NO$(27) = "VIE" : NO$(28) = "WAL"
+        Data.Nouns(NounIdentifier.Noun25) = "CLO"
+        Data.Nouns(NounIdentifier.Noun26) = "FOO"
+        Data.Nouns(NounIdentifier.Noun27) = "VIE"
+        Data.Nouns(NounIdentifier.Noun28) = "WAL"
+
+        '2080 NO$(29)="REA":NO$(30) = "SUI" : NO$(31) = "DOO" : NO$(32) = "COM"
+        Data.Nouns(NounIdentifier.Noun29) = "REA"
+        Data.Nouns(NounIdentifier.Noun30) = "SUI"
+        Data.Nouns(NounIdentifier.Noun31) = "DOO"
+        Data.Nouns(NounIdentifier.Noun32) = "COM"
+
+        '2090 NO$(33)="SHO":NO$(34) = "WIN" : NO$(35) = "ROP" : NO$(36) = "CON"
+        Data.Nouns(NounIdentifier.Noun33) = "SHO"
+        Data.Nouns(NounIdentifier.Noun34) = "WIN"
+        Data.Nouns(NounIdentifier.Noun35) = "ROP"
+        Data.Nouns(NounIdentifier.Noun36) = "CON"
+
+        '2100 NO$(37)="PAC":NO$(38) = "HAT" : NO$(39) = "BOO" : NO$(40) = "JEW"
+        Data.Nouns(NounIdentifier.Noun37) = "PAC"
+        Data.Nouns(NounIdentifier.Noun38) = "HAT"
+        Data.Nouns(NounIdentifier.Noun39) = "BOO"
+        Data.Nouns(NounIdentifier.Noun40) = "JEW"
+
+        '2110 NO$(41)="EXP":NO$(42) = "MAP" : NO$(43) = "DIA" : NO$(44) = "TEL"
+        Data.Nouns(NounIdentifier.Noun41) = "EXP"
+        Data.Nouns(NounIdentifier.Noun42) = "MAP"
+        Data.Nouns(NounIdentifier.Noun43) = "DIA"
+        Data.Nouns(NounIdentifier.Noun44) = "TEL"
+    End Sub
+
+    Private Sub InitializeRooms()
         '1010 RM$(1)="in the hyper-sleep chamber of the NOSTROMO
         '1020 DATA0,0,0,9,0,0
         Data.Rooms(RoomIdentifier.Room1) = New RoomData With
