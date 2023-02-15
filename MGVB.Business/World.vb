@@ -6,6 +6,66 @@
         InitializeRooms()
         InitializeNouns()
         InitializeVerbs()
+        InitializeObjects()
+    End Sub
+
+    Private Sub InitializeObjects()
+        '4010 OB$(1)="CAT":OB$(2)="HYPER-SLEEP POD":OB$(3)="LADDER"
+        '4020 DATA 10,7,0, 0,9,1, 0,15,36
+        Data.Objects(ObjectIdentifier.Object1) = New ObjectData With
+            {
+                .Name = "CAT",
+                .Score = 10,
+                .Noun = NounIdentifier.Noun7,
+                .Room = Nothing
+            }
+        Data.Objects(ObjectIdentifier.Object2) = New ObjectData With
+            {
+                .Name = "HYPER-SLEEP POD",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun9,
+                .Room = RoomIdentifier.Room1
+            }
+        Data.Objects(ObjectIdentifier.Object3) = New ObjectData With
+            {
+                .Name = "LADDER",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun15,
+                .Room = RoomIdentifier.Room36
+            }
+
+
+        '4030 OB$(4)="SMALL ALIEN":OB$(5)="HUGE ALIEN":OB$(6)="TRACKER"
+        '4040 DATA 0,8,0, 0,8,0, 0,11,34
+        '4050 OB$(7)="EXAMINATION TABLE":OB$(8)="MICROSCOPE"
+        '4060 DATA 0,12,4, 0,14,4
+        '4070 OB$(9)="ORGANIC OVOID":OB$(10)="LADDER":OB$(11)="TABLE"
+        '4080 DATA 0,13,29, 0,15,35, 0,14,2
+        '4090 OB$(12)="OPEN ORGANIC OVOID":OB$(13)="BATTERY PACK"
+        '4100 DATA 0,13,0, 0,37,8
+        '4110 OB$(14)="BUTTON":OB$(15)="VIEWPORT":OB$(16)="BUTTON"
+        '4120 DATA 0,17,6, 0,27,3, 0,17,17
+        '4130 OB$(17)="FLAMETHROWER":OB$(18)="OXYGEN"
+        '4140 DATA 0,21,16, 10,23,6
+        '4150 OB$(19)="ANOTHER HOLE":OB$(20)="COMPUTER CONSOLE"
+        '4160 DATA 0,18,0, 0,36,37
+        '4170 OB$(21)="SPACE SUIT":OB$(22)="CAT FOOD"
+        '4180 DATA 0,30,32, 0,26,11
+        '4190 OB$(23)="FUEL":OB$(24)="CONTROL CONSOLE"
+        '4200 DATA 10,24,10, 0,36,31
+        '4210 OB$(25)="OPEN DOOR":OB$(26)="CLOSED DOOR":OB$(27)="SHOVEL"
+        '4220 DATA 0,31,0, 0,31,6, 0,33,38
+        '4230 OB$(28)="LOCKER":OB$(29)="* DIAMOND *"
+        '4240 DATA 0,20,31, 10,43,21
+        '4250 OB$(30)="* RARE ALIEN JEWEL *":OB$(31)="* ALIEN BOOK *"
+        '4260 DATA 10,40,26, 10,39,0, 10,41,29, 10,44,28, 10,42,0
+        '4270 OB$(32)="* ALIEN EXPLOSIVE *"
+        '4280 OB$(33)="* ALIEN TELEPORTER *"
+        '4290 OB$(34)="* MAP OF UNIVERSE! *"
+        '4300 OB$(35)="PORTABLE WINCH & ROPE":OB$(36)="CLOSET"
+        '4310 OB$(38)="DEEP HOLE":OB$(39)="HOLE":OB$(40)="HOLE IN WALL"
+        '4320 OB$(41)="AUTOMATIC HATCH":OB$(37)=OB$(36)
+        '4330 DATA 0,34,10, 0,25,34, 0,25,0, 0,18,26, 0,18,0, 0,18,0, 0,45,31
     End Sub
 
     Private Sub InitializeVerbs()
@@ -84,7 +144,7 @@
         '2040 NO$(13)="OVO":NO$(14) = "MIC" : NO$(15) = "LAD" : NO$(16) = "LEV"
         Data.Nouns(NounIdentifier.Noun13) = "OVO"
         Data.Nouns(NounIdentifier.Noun14) = "MIC"
-        Data.Nouns(NounIdentifier.Noun15) = "LAD"
+        Data.Nouns(NounIdentifier.Noun15) = "LADDER"
         Data.Nouns(NounIdentifier.Noun16) = "LEV"
 
         '2050 NO$(17)="BUT":NO$(18) = "HOL" : NO$(19) = "SHU" : NO$(20) = "LOC"
