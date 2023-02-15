@@ -5,6 +5,61 @@
         Data = New WorldData
         InitializeRooms()
         InitializeNouns()
+        InitializeVerbs()
+    End Sub
+
+    Private Sub InitializeVerbs()
+        '3010 VB$(1)="N":VB$(2)="S":VB$(3)="E":VB$(4)="W":VB$(5)="U"
+        Data.Verbs(VerbIdentifier.Verb1) = "N"
+        Data.Verbs(VerbIdentifier.Verb2) = "S"
+        Data.Verbs(VerbIdentifier.Verb3) = "E"
+        Data.Verbs(VerbIdentifier.Verb4) = "W"
+        Data.Verbs(VerbIdentifier.Verb5) = "U"
+
+        '3020 VB$(6)="D":VB$(7)="CON":VB$(8)="DRO":VB$(9)="SUI"
+        Data.Verbs(VerbIdentifier.Verb6) = "D"
+        Data.Verbs(VerbIdentifier.Verb7) = "CON"
+        Data.Verbs(VerbIdentifier.Verb8) = "DRO"
+        Data.Verbs(VerbIdentifier.Verb9) = "SUI"
+
+        '3030 VB$(10)="SHO":VB$(11)="KIL":VB$(12)="SAY":VB$(13)="I"
+        Data.Verbs(VerbIdentifier.Verb10) = "SHO"
+        Data.Verbs(VerbIdentifier.Verb11) = "KIL"
+        Data.Verbs(VerbIdentifier.Verb12) = "SAY"
+        Data.Verbs(VerbIdentifier.Verb13) = "I"
+
+        '3040 VB$(14)="PRE":VB$(15)="PUL":VB$(16)="PUS":VB$(17)="EXA"
+        Data.Verbs(VerbIdentifier.Verb14) = "PRE"
+        Data.Verbs(VerbIdentifier.Verb15) = "PUL"
+        Data.Verbs(VerbIdentifier.Verb16) = "PUS"
+        Data.Verbs(VerbIdentifier.Verb17) = "EXA"
+
+        '3050 VB$(18)="OPE":VB$(19)="GO":VB$(20)="CLI":VB$(21)="JUM"
+        Data.Verbs(VerbIdentifier.Verb18) = "OPE"
+        Data.Verbs(VerbIdentifier.Verb19) = "GO"
+        Data.Verbs(VerbIdentifier.Verb20) = "CLI"
+        Data.Verbs(VerbIdentifier.Verb21) = "JUM"
+
+        '3060 VB$(22)="GET":VB$(23)="LOO":VB$(24)="SAV":VB$(25)="LOA"
+        Data.Verbs(VerbIdentifier.Verb22) = "GET"
+        Data.Verbs(VerbIdentifier.Verb23) = "LOO"
+        Data.Verbs(VerbIdentifier.Verb24) = "SAV"
+        Data.Verbs(VerbIdentifier.Verb25) = "LOA"
+
+        '3070 VB$(26)="DIG":VB$(27)="STA"::VB$(28)="HEL":VB$(29)="SCO"
+        Data.Verbs(VerbIdentifier.Verb26) = "DIG"
+        Data.Verbs(VerbIdentifier.Verb27) = "STA"
+        Data.Verbs(VerbIdentifier.Verb28) = "HEL"
+        Data.Verbs(VerbIdentifier.Verb29) = "SCO"
+
+        '3080 VB$(30)="QUI":VB$(31)="FIR":VB$(32)="TAK":VB$(33)="PUT"
+        Data.Verbs(VerbIdentifier.Verb30) = "QUI"
+        Data.Verbs(VerbIdentifier.Verb31) = "FIR"
+        Data.Verbs(VerbIdentifier.Verb32) = "TAK"
+        Data.Verbs(VerbIdentifier.Verb33) = "PUT"
+
+        '3090 VB$(34)="ENT"
+        Data.Verbs(VerbIdentifier.Verb34) = "ENT"
     End Sub
 
     Private Sub InitializeNouns()
