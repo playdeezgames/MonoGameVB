@@ -478,7 +478,7 @@
         Data.Nouns(NounIdentifier.Noun40) = "JEWEL"
 
         '2110 NO$(41)="EXP":NO$(42) = "MAP" : NO$(43) = "DIA" : NO$(44) = "TEL"
-        Data.Nouns(NounIdentifier.Noun41) = "EXP"
+        Data.Nouns(NounIdentifier.Noun41) = "EXPLOSIVE"
         Data.Nouns(NounIdentifier.Noun42) = "MAP"
         Data.Nouns(NounIdentifier.Noun43) = "DIAMOND"
         Data.Nouns(NounIdentifier.Noun44) = "TELEPORTER"
