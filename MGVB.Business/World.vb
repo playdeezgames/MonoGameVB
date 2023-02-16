@@ -37,35 +37,329 @@
 
         '4030 OB$(4)="SMALL ALIEN":OB$(5)="HUGE ALIEN":OB$(6)="TRACKER"
         '4040 DATA 0,8,0, 0,8,0, 0,11,34
+        Data.Objects(ObjectIdentifier.Object4) = New ObjectData With
+            {
+                .Name = "SMALL ALIEN",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun8,
+                .Room = Nothing
+            }
+        Data.Objects(ObjectIdentifier.Object5) = New ObjectData With
+            {
+                .Name = "HUGE ALIEN",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun8
+            }
+        Data.Objects(ObjectIdentifier.Object6) = New ObjectData With
+            {
+                .Name = "TRACKER",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun11,
+                .Room = RoomIdentifier.Room34
+            }
+
+
         '4050 OB$(7)="EXAMINATION TABLE":OB$(8)="MICROSCOPE"
         '4060 DATA 0,12,4, 0,14,4
+        Data.Objects(ObjectIdentifier.Object7) = New ObjectData With
+            {
+                .Name = "EXAMINATION TABLE",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun12,
+                .Room = RoomIdentifier.Room4
+            }
+        Data.Objects(ObjectIdentifier.Object8) = New ObjectData With
+            {
+                .Name = "MICROSCOPE",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun14,
+                .Room = RoomIdentifier.Room4
+            }
+
         '4070 OB$(9)="ORGANIC OVOID":OB$(10)="LADDER":OB$(11)="TABLE"
         '4080 DATA 0,13,29, 0,15,35, 0,14,2
+        Data.Objects(ObjectIdentifier.Object9) = New ObjectData With
+            {
+                .Name = "ORGANIC OVOID",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun13,
+                .Room = RoomIdentifier.Room29
+            }
+        Data.Objects(ObjectIdentifier.Object10) = New ObjectData With
+            {
+                .Name = "LADDER",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun15,
+                .Room = RoomIdentifier.Room35
+            }
+        Data.Objects(ObjectIdentifier.Object11) = New ObjectData With
+            {
+                .Name = "TABLE",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun12,
+                .Room = RoomIdentifier.Room2
+            }
+
         '4090 OB$(12)="OPEN ORGANIC OVOID":OB$(13)="BATTERY PACK"
         '4100 DATA 0,13,0, 0,37,8
+        Data.Objects(ObjectIdentifier.Object12) = New ObjectData With
+            {
+                .Name = "OPEN ORGANIC OVOID",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun13,
+                .Room = Nothing
+            }
+        Data.Objects(ObjectIdentifier.Object13) = New ObjectData With
+            {
+                .Name = "BATTERY PACK",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun37,
+                .Room = RoomIdentifier.Room8
+            }
+
         '4110 OB$(14)="BUTTON":OB$(15)="VIEWPORT":OB$(16)="BUTTON"
         '4120 DATA 0,17,6, 0,27,3, 0,17,17
+        Data.Objects(ObjectIdentifier.Object14) = New ObjectData With
+            {
+                .Name = "BUTTON",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun17,
+                .Room = RoomIdentifier.Room6
+            }
+        Data.Objects(ObjectIdentifier.Object15) = New ObjectData With
+            {
+                .Name = "VIEWPORT",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun27,
+                .Room = RoomIdentifier.Room3
+            }
+        Data.Objects(ObjectIdentifier.Object16) = New ObjectData With
+            {
+                .Name = "BUTTON",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun17,
+                .Room = RoomIdentifier.Room17
+            }
+
         '4130 OB$(17)="FLAMETHROWER":OB$(18)="OXYGEN"
         '4140 DATA 0,21,16, 10,23,6
+        Data.Objects(ObjectIdentifier.Object17) = New ObjectData With
+            {
+                .Name = "FLAMETHROWER",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun21,
+                .Room = RoomIdentifier.Room16
+            }
+        Data.Objects(ObjectIdentifier.Object18) = New ObjectData With
+            {
+                .Name = "OXYGEN",
+                .Score = 10,
+                .Noun = NounIdentifier.Noun23,
+                .Room = RoomIdentifier.Room6
+            }
+
         '4150 OB$(19)="ANOTHER HOLE":OB$(20)="COMPUTER CONSOLE"
         '4160 DATA 0,18,0, 0,36,37
+        Data.Objects(ObjectIdentifier.Object19) = New ObjectData With
+            {
+                .Name = "ANOTHER HOLE",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun18,
+                .Room = Nothing
+            }
+        Data.Objects(ObjectIdentifier.Object20) = New ObjectData With
+            {
+                .Name = "COMPUTER CONSOLE",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun36,
+                .Room = RoomIdentifier.Room37
+            }
+
         '4170 OB$(21)="SPACE SUIT":OB$(22)="CAT FOOD"
         '4180 DATA 0,30,32, 0,26,11
+        Data.Objects(ObjectIdentifier.Object21) = New ObjectData With
+            {
+                .Name = "SPACE SUIT",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun30,
+                .Room = RoomIdentifier.Room32
+            }
+        Data.Objects(ObjectIdentifier.Object22) = New ObjectData With
+            {
+                .Name = "CAT FOOD",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun26,
+                .Room = RoomIdentifier.Room11
+            }
+
         '4190 OB$(23)="FUEL":OB$(24)="CONTROL CONSOLE"
         '4200 DATA 10,24,10, 0,36,31
+        Data.Objects(ObjectIdentifier.Object23) = New ObjectData With
+            {
+                .Name = "FUEL",
+                .Score = 10,
+                .Noun = NounIdentifier.Noun24,
+                .Room = RoomIdentifier.Room10
+            }
+        Data.Objects(ObjectIdentifier.Object24) = New ObjectData With
+            {
+                .Name = "CONTROL CONSOLE",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun36,
+                .Room = RoomIdentifier.Room31
+            }
+
         '4210 OB$(25)="OPEN DOOR":OB$(26)="CLOSED DOOR":OB$(27)="SHOVEL"
         '4220 DATA 0,31,0, 0,31,6, 0,33,38
+        Data.Objects(ObjectIdentifier.Object25) = New ObjectData With
+            {
+                .Name = "OPEN DOOR",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun31,
+                .Room = Nothing
+            }
+        Data.Objects(ObjectIdentifier.Object26) = New ObjectData With
+            {
+                .Name = "CLOSED DOOR",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun31,
+                .Room = RoomIdentifier.Room6
+            }
+        Data.Objects(ObjectIdentifier.Object27) = New ObjectData With
+            {
+                .Name = "SHOVEL",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun33,
+                .Room = RoomIdentifier.Room38
+            }
+
         '4230 OB$(28)="LOCKER":OB$(29)="* DIAMOND *"
         '4240 DATA 0,20,31, 10,43,21
+        Data.Objects(ObjectIdentifier.Object28) = New ObjectData With
+            {
+                .Name = "LOCKER",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun20,
+                .Room = RoomIdentifier.Room31
+            }
+        Data.Objects(ObjectIdentifier.Object29) = New ObjectData With
+            {
+                .Name = "* DIAMOND *",
+                .Score = 10,
+                .Noun = NounIdentifier.Noun43,
+                .Room = RoomIdentifier.Room21
+            }
+
         '4250 OB$(30)="* RARE ALIEN JEWEL *":OB$(31)="* ALIEN BOOK *"
-        '4260 DATA 10,40,26, 10,39,0, 10,41,29, 10,44,28, 10,42,0
         '4270 OB$(32)="* ALIEN EXPLOSIVE *"
         '4280 OB$(33)="* ALIEN TELEPORTER *"
         '4290 OB$(34)="* MAP OF UNIVERSE! *"
-        '4300 OB$(35)="PORTABLE WINCH & ROPE":OB$(36)="CLOSET"
-        '4310 OB$(38)="DEEP HOLE":OB$(39)="HOLE":OB$(40)="HOLE IN WALL"
-        '4320 OB$(41)="AUTOMATIC HATCH":OB$(37)=OB$(36)
-        '4330 DATA 0,34,10, 0,25,34, 0,25,0, 0,18,26, 0,18,0, 0,18,0, 0,45,31
+        '4260 DATA 10,40,26, 10,39,0, 10,41,29, 10,44,28, 10,42,0
+        Data.Objects(ObjectIdentifier.Object30) = New ObjectData With
+            {
+                .Name = "* RARE ALIEN JEWEL *",
+                .Score = 10,
+                .Noun = NounIdentifier.Noun40,
+                .Room = RoomIdentifier.Room26
+            }
+        Data.Objects(ObjectIdentifier.Object31) = New ObjectData With
+            {
+                .Name = "* ALIEN BOOK *",
+                .Score = 10,
+                .Noun = NounIdentifier.Noun39,
+                .Room = Nothing
+            }
+        Data.Objects(ObjectIdentifier.Object32) = New ObjectData With
+            {
+                .Name = "* ALIEN EXPLOSIVE *",
+                .Score = 10,
+                .Noun = NounIdentifier.Noun41,
+                .Room = RoomIdentifier.Room29
+            }
+        Data.Objects(ObjectIdentifier.Object33) = New ObjectData With
+            {
+                .Name = "* ALIEN TELEPORTER *",
+                .Score = 10,
+                .Noun = NounIdentifier.Noun44,
+                .Room = RoomIdentifier.Room28
+            }
+        Data.Objects(ObjectIdentifier.Object34) = New ObjectData With
+            {
+                .Name = "* MAP OF UNIVERSE! *",
+                .Score = 10,
+                .Noun = NounIdentifier.Noun42,
+                .Room = Nothing
+            }
+
+        '4300 OB$(35)="PORTABLE WINCH & ROPE":
+        '4330 DATA 0,34,10,
+        Data.Objects(ObjectIdentifier.Object35) = New ObjectData With
+            {
+                .Name = "PORTABLE WINCH & ROPE",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun34,
+                .Room = RoomIdentifier.Room10
+            }
+
+        '4301 OB$(36)="CLOSET"
+        '4331 DATA 0,25,34,
+        Data.Objects(ObjectIdentifier.Object36) = New ObjectData With
+            {
+                .Name = "CLOSET",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun25,
+                .Room = RoomIdentifier.Room34
+            }
+
+        '4305 OB$(37)="CLOSET"
+        '4332 DATA 0,25,0,
+        Data.Objects(ObjectIdentifier.Object37) = New ObjectData With
+            {
+                .Name = "CLOSET",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun25,
+                .Room = Nothing
+            }
+
+        '4310 OB$(38)="DEEP HOLE"
+        '4333 DATA 0,18,26,
+        Data.Objects(ObjectIdentifier.Object38) = New ObjectData With
+            {
+                .Name = "DEEP HOLE",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun18,
+                .Room = RoomIdentifier.Room26
+            }
+
+        '4311 OB$(39)="HOLE"
+        '4334 DATA 0,18,0,
+        Data.Objects(ObjectIdentifier.Object39) = New ObjectData With
+            {
+                .Name = "HOLE",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun18,
+                .Room = Nothing
+            }
+
+        '4312 OB$(40)="HOLE IN WALL"
+        '4335 DATA 0,18,0,
+        Data.Objects(ObjectIdentifier.Object40) = New ObjectData With
+            {
+                .Name = "HOLE IN WALL",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun18,
+                .Room = Nothing
+            }
+
+        '4320 OB$(41)="AUTOMATIC HATCH"
+        '4336 DATA 0,45,31
+        Data.Objects(ObjectIdentifier.Object41) = New ObjectData With
+            {
+                .Name = "AUTOMATIC HATCH",
+                .Score = 0,
+                .Noun = NounIdentifier.Noun38,
+                .Room = RoomIdentifier.Room31
+            }
     End Sub
 
     Private Sub InitializeVerbs()
@@ -78,12 +372,12 @@
 
         '3020 VB$(6)="D":VB$(7)="CON":VB$(8)="DRO":VB$(9)="SUI"
         Data.Verbs(VerbIdentifier.Verb6) = "D"
-        Data.Verbs(VerbIdentifier.Verb7) = "CON"
-        Data.Verbs(VerbIdentifier.Verb8) = "DRO"
+        Data.Verbs(VerbIdentifier.Verb7) = "CONNECT"
+        Data.Verbs(VerbIdentifier.Verb8) = "DROP"
         Data.Verbs(VerbIdentifier.Verb9) = "SUI"
 
         '3030 VB$(10)="SHO":VB$(11)="KIL":VB$(12)="SAY":VB$(13)="I"
-        Data.Verbs(VerbIdentifier.Verb10) = "SHO"
+        Data.Verbs(VerbIdentifier.Verb10) = "SHOVEL"
         Data.Verbs(VerbIdentifier.Verb11) = "KIL"
         Data.Verbs(VerbIdentifier.Verb12) = "SAY"
         Data.Verbs(VerbIdentifier.Verb13) = "I"
@@ -95,16 +389,16 @@
         Data.Verbs(VerbIdentifier.Verb17) = "EXA"
 
         '3050 VB$(18)="OPE":VB$(19)="GO":VB$(20)="CLI":VB$(21)="JUM"
-        Data.Verbs(VerbIdentifier.Verb18) = "OPE"
+        Data.Verbs(VerbIdentifier.Verb18) = "OPEN"
         Data.Verbs(VerbIdentifier.Verb19) = "GO"
-        Data.Verbs(VerbIdentifier.Verb20) = "CLI"
-        Data.Verbs(VerbIdentifier.Verb21) = "JUM"
+        Data.Verbs(VerbIdentifier.Verb20) = "CLIMB"
+        Data.Verbs(VerbIdentifier.Verb21) = "JUMP"
 
         '3060 VB$(22)="GET":VB$(23)="LOO":VB$(24)="SAV":VB$(25)="LOA"
         Data.Verbs(VerbIdentifier.Verb22) = "GET"
-        Data.Verbs(VerbIdentifier.Verb23) = "LOO"
-        Data.Verbs(VerbIdentifier.Verb24) = "SAV"
-        Data.Verbs(VerbIdentifier.Verb25) = "LOA"
+        Data.Verbs(VerbIdentifier.Verb23) = "LOOK"
+        Data.Verbs(VerbIdentifier.Verb24) = "SAVE"
+        Data.Verbs(VerbIdentifier.Verb25) = "LOAD"
 
         '3070 VB$(26)="DIG":VB$(27)="STA"::VB$(28)="HEL":VB$(29)="SCO"
         Data.Verbs(VerbIdentifier.Verb26) = "DIG"
@@ -113,13 +407,13 @@
         Data.Verbs(VerbIdentifier.Verb29) = "SCO"
 
         '3080 VB$(30)="QUI":VB$(31)="FIR":VB$(32)="TAK":VB$(33)="PUT"
-        Data.Verbs(VerbIdentifier.Verb30) = "QUI"
+        Data.Verbs(VerbIdentifier.Verb30) = "QUIT"
         Data.Verbs(VerbIdentifier.Verb31) = "FIR"
-        Data.Verbs(VerbIdentifier.Verb32) = "TAK"
+        Data.Verbs(VerbIdentifier.Verb32) = "TAKE"
         Data.Verbs(VerbIdentifier.Verb33) = "PUT"
 
         '3090 VB$(34)="ENT"
-        Data.Verbs(VerbIdentifier.Verb34) = "ENT"
+        Data.Verbs(VerbIdentifier.Verb34) = "ENTER"
     End Sub
 
     Private Sub InitializeNouns()
@@ -133,61 +427,61 @@
         Data.Nouns(NounIdentifier.Noun5) = "UP"
         Data.Nouns(NounIdentifier.Noun6) = "DOWN"
         Data.Nouns(NounIdentifier.Noun7) = "CAT"
-        Data.Nouns(NounIdentifier.Noun8) = "ALI"
+        Data.Nouns(NounIdentifier.Noun8) = "ALIEN"
 
         '2030 NO$(9)="POD":NO$(10) = "SKE" : NO$(11) = "TRA" : NO$(12) = "TAB"
         Data.Nouns(NounIdentifier.Noun9) = "POD"
-        Data.Nouns(NounIdentifier.Noun10) = "SKE"
-        Data.Nouns(NounIdentifier.Noun11) = "TRA"
-        Data.Nouns(NounIdentifier.Noun12) = "TAB"
+        Data.Nouns(NounIdentifier.Noun10) = "SKELETON"
+        Data.Nouns(NounIdentifier.Noun11) = "TRACKER"
+        Data.Nouns(NounIdentifier.Noun12) = "TABLE"
 
         '2040 NO$(13)="OVO":NO$(14) = "MIC" : NO$(15) = "LAD" : NO$(16) = "LEV"
-        Data.Nouns(NounIdentifier.Noun13) = "OVO"
-        Data.Nouns(NounIdentifier.Noun14) = "MIC"
+        Data.Nouns(NounIdentifier.Noun13) = "OVOID"
+        Data.Nouns(NounIdentifier.Noun14) = "MICROSCOPE"
         Data.Nouns(NounIdentifier.Noun15) = "LADDER"
-        Data.Nouns(NounIdentifier.Noun16) = "LEV"
+        Data.Nouns(NounIdentifier.Noun16) = "LEVER"
 
         '2050 NO$(17)="BUT":NO$(18) = "HOL" : NO$(19) = "SHU" : NO$(20) = "LOC"
-        Data.Nouns(NounIdentifier.Noun17) = "BUT"
-        Data.Nouns(NounIdentifier.Noun18) = "HOL"
-        Data.Nouns(NounIdentifier.Noun19) = "SHU"
-        Data.Nouns(NounIdentifier.Noun20) = "LOC"
+        Data.Nouns(NounIdentifier.Noun17) = "BUTTON"
+        Data.Nouns(NounIdentifier.Noun18) = "HOLE"
+        Data.Nouns(NounIdentifier.Noun19) = "SHUTTLE"
+        Data.Nouns(NounIdentifier.Noun20) = "LOCKER"
 
         '2060 NO$(21)="FLA":NO$(22) = "PLA" : NO$(23) = "OXY" : NO$(24) = "FUE"
-        Data.Nouns(NounIdentifier.Noun21) = "FLA"
-        Data.Nouns(NounIdentifier.Noun22) = "PLA"
-        Data.Nouns(NounIdentifier.Noun23) = "OXY"
-        Data.Nouns(NounIdentifier.Noun24) = "FUE"
+        Data.Nouns(NounIdentifier.Noun21) = "FLAMETHROWER"
+        Data.Nouns(NounIdentifier.Noun22) = "PLANET"
+        Data.Nouns(NounIdentifier.Noun23) = "OXYGEN"
+        Data.Nouns(NounIdentifier.Noun24) = "FUEL"
 
         '2070 NO$(25)="CLO":NO$(26) = "FOO" : NO$(27) = "VIE" : NO$(28) = "WAL"
-        Data.Nouns(NounIdentifier.Noun25) = "CLO"
-        Data.Nouns(NounIdentifier.Noun26) = "FOO"
-        Data.Nouns(NounIdentifier.Noun27) = "VIE"
-        Data.Nouns(NounIdentifier.Noun28) = "WAL"
+        Data.Nouns(NounIdentifier.Noun25) = "CLOSET"
+        Data.Nouns(NounIdentifier.Noun26) = "FOOD"
+        Data.Nouns(NounIdentifier.Noun27) = "VIEWPORT"
+        Data.Nouns(NounIdentifier.Noun28) = "WALL"
 
         '2080 NO$(29)="REA":NO$(30) = "SUI" : NO$(31) = "DOO" : NO$(32) = "COM"
-        Data.Nouns(NounIdentifier.Noun29) = "REA"
-        Data.Nouns(NounIdentifier.Noun30) = "SUI"
-        Data.Nouns(NounIdentifier.Noun31) = "DOO"
-        Data.Nouns(NounIdentifier.Noun32) = "COM"
+        Data.Nouns(NounIdentifier.Noun29) = "REACTOR"
+        Data.Nouns(NounIdentifier.Noun30) = "SUIT"
+        Data.Nouns(NounIdentifier.Noun31) = "DOOR"
+        Data.Nouns(NounIdentifier.Noun32) = "COMPUTER"
 
         '2090 NO$(33)="SHO":NO$(34) = "WIN" : NO$(35) = "ROP" : NO$(36) = "CON"
-        Data.Nouns(NounIdentifier.Noun33) = "SHO"
-        Data.Nouns(NounIdentifier.Noun34) = "WIN"
-        Data.Nouns(NounIdentifier.Noun35) = "ROP"
-        Data.Nouns(NounIdentifier.Noun36) = "CON"
+        Data.Nouns(NounIdentifier.Noun33) = "SHOVEL"
+        Data.Nouns(NounIdentifier.Noun34) = "WINCH"
+        Data.Nouns(NounIdentifier.Noun35) = "ROPE"
+        Data.Nouns(NounIdentifier.Noun36) = "CONSOLE"
 
         '2100 NO$(37)="PAC":NO$(38) = "HAT" : NO$(39) = "BOO" : NO$(40) = "JEW"
-        Data.Nouns(NounIdentifier.Noun37) = "PAC"
-        Data.Nouns(NounIdentifier.Noun38) = "HAT"
-        Data.Nouns(NounIdentifier.Noun39) = "BOO"
-        Data.Nouns(NounIdentifier.Noun40) = "JEW"
+        Data.Nouns(NounIdentifier.Noun37) = "PACK"
+        Data.Nouns(NounIdentifier.Noun38) = "HATCH"
+        Data.Nouns(NounIdentifier.Noun39) = "BOOK"
+        Data.Nouns(NounIdentifier.Noun40) = "JEWEL"
 
         '2110 NO$(41)="EXP":NO$(42) = "MAP" : NO$(43) = "DIA" : NO$(44) = "TEL"
         Data.Nouns(NounIdentifier.Noun41) = "EXP"
         Data.Nouns(NounIdentifier.Noun42) = "MAP"
-        Data.Nouns(NounIdentifier.Noun43) = "DIA"
-        Data.Nouns(NounIdentifier.Noun44) = "TEL"
+        Data.Nouns(NounIdentifier.Noun43) = "DIAMOND"
+        Data.Nouns(NounIdentifier.Noun44) = "TELEPORTER"
     End Sub
 
     Private Sub InitializeRooms()
