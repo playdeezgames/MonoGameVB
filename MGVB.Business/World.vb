@@ -408,7 +408,7 @@
 
         '3080 VB$(30)="QUI":VB$(31)="FIR":VB$(32)="TAK":VB$(33)="PUT"
         Data.Verbs(VerbIdentifier.Quit) = "QUIT"
-        Data.Verbs(VerbIdentifier.Verb31) = "FIR"
+        Data.Verbs(VerbIdentifier.Verb31) = "FIRE"
         Data.Verbs(VerbIdentifier.Take) = "TAKE"
         Data.Verbs(VerbIdentifier.Put) = "PUT"
 

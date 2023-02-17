@@ -1,46 +1,46 @@
 ﻿Public Enum NounIdentifier
-    Noun1
-    Noun2
-    Noun3
-    Noun4
-    Noun5
-    Noun6
-    Noun7
-    Noun8
-    Noun9
-    Noun10
-    Noun11
-    Noun12
-    Noun13
-    Noun14
-    Noun15
-    Noun16
-    Noun17
-    Noun18
-    Noun19
-    Noun20
-    Noun21
-    Noun22
-    Noun23
-    Noun24
-    Noun25
-    Noun26
-    Noun27
-    Noun28
-    Noun29
-    Noun30
-    Noun31
-    Noun32
-    Noun33
-    Noun34
-    Noun35
-    Noun36
-    Noun37
-    Noun38
-    Noun39
-    Noun40
-    Noun41
-    Noun42
-    Noun43
-    Noun44
+    Noun1 '1
+    Noun2 '2
+    Noun3 '3
+    Noun4 '4
+    Noun5 '5
+    Noun6 '6
+    Noun7 '7
+    Noun8 '8
+    Noun9 '9
+    Noun10 '10
+    Noun11 '11
+    Noun12 '12
+    Noun13 '13
+    Noun14 '14
+    Noun15 '15
+    Noun16 '16
+    Noun17 '17
+    Noun18 '18
+    Noun19 '19
+    Noun20 '20
+    Noun21 '21
+    Noun22 '22
+    Noun23 '23
+    Noun24 '24
+    Noun25 '25
+    Noun26 '26
+    Noun27 '27
+    Noun28 '28
+    Noun29 '29
+    Noun30 '30
+    Noun31 '31
+    Noun32 '32
+    Noun33 '33
+    Noun34 '34
+    Noun35 '35
+    Noun36 '36
+    Noun37 '37
+    Noun38 '38
+    Noun39 '39
+    Noun40 '40
+    Noun41 '41
+    Noun42 '42
+    Noun43 '43
+    Noun44 '44
 End Enum
