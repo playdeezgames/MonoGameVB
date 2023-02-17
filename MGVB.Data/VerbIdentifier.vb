@@ -1,36 +1,36 @@
 ﻿Public Enum VerbIdentifier
-    Verb1
-    Verb2
-    Verb3
-    Verb4
-    Verb5
-    Verb6
-    Verb7
-    Verb8
-    Verb9
-    Verb10
-    Verb11
-    Verb12
-    Verb13
-    Verb14
-    Verb15
-    Verb16
-    Verb17
-    Verb18
-    Verb19
-    Verb20
-    Verb21
-    Verb22
-    Verb23
-    Verb24
-    Verb25
-    Verb26
-    Verb27
-    Verb28
-    Verb29
-    Verb30
-    Verb31
-    Verb32
-    Verb33
-    Verb34
+    North '1
+    South '2
+    East '3
+    West '4
+    Up '5
+    Down '6
+    Connect '7
+    Drop '8
+    Suit '9
+    Shovel '10
+    Kill '11
+    Say '12
+    Inventory '13
+    Press '14
+    Pull ' '15
+    Push '16
+    Examine '17
+    Open '18
+    Go '19
+    Climb '20
+    Jump '21
+    [Get] '22
+    Look '23
+    Save '24
+    Load '25
+    Dig '26
+    Stash '27
+    Help '28
+    Score '29
+    Quit '30
+    Verb31 '31
+    Take '32
+    Put '33
+    Enter '34
 End Enum
