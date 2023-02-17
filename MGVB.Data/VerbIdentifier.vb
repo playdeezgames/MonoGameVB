@@ -29,7 +29,7 @@
     Help '28
     Score '29
     Quit '30
-    Verb31 '31
+    Fire '31
     Take '32
     Put '33
     Enter '34
