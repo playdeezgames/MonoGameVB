@@ -374,11 +374,11 @@
         Data.Verbs(VerbIdentifier.Verb6) = "D"
         Data.Verbs(VerbIdentifier.Verb7) = "CONNECT"
         Data.Verbs(VerbIdentifier.Verb8) = "DROP"
-        Data.Verbs(VerbIdentifier.Verb9) = "SUI"
+        Data.Verbs(VerbIdentifier.Verb9) = "SUIT"
 
         '3030 VB$(10)="SHO":VB$(11)="KIL":VB$(12)="SAY":VB$(13)="I"
         Data.Verbs(VerbIdentifier.Verb10) = "SHOVEL"
-        Data.Verbs(VerbIdentifier.Verb11) = "KIL"
+        Data.Verbs(VerbIdentifier.Verb11) = "KILL"
         Data.Verbs(VerbIdentifier.Verb12) = "SAY"
         Data.Verbs(VerbIdentifier.Verb13) = "I"
 
@@ -449,7 +449,7 @@
 
         '2060 NO$(21)="FLA":NO$(22) = "PLA" : NO$(23) = "OXY" : NO$(24) = "FUE"
         Data.Nouns(NounIdentifier.Noun21) = "FLAMETHROWER"
-        Data.Nouns(NounIdentifier.Noun22) = "PLANET"
+        Data.Nouns(NounIdentifier.Noun22) = "PLATFORM"
         Data.Nouns(NounIdentifier.Noun23) = "OXYGEN"
         Data.Nouns(NounIdentifier.Noun24) = "FUEL"
 
