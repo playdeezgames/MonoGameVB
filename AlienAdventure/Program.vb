@@ -2,6 +2,56 @@ Imports System.Reflection.Emit
 Imports Spectre.Console.Rendering
 
 Module Program
+    Dim Q As Integer = -1
+    Dim V As Integer = 0
+    Dim TC As Integer = V
+    Dim L As Integer = V
+    Dim AR As Integer = V
+    Dim TH As Integer = Q
+    Dim OB_(,) As Integer = {
+                {0, 0, 0},'there is no object 0
+                {10, 7, 0},
+                {0, 9, 1},
+                {0, 15, 36},
+                {0, 8, 0},
+                {0, 8, 0},
+                {0, 11, 34},
+                {0, 12, 4},
+                {0, 14, 4},
+                {0, 13, 29},
+                {0, 15, 35},
+                {0, 14, 2},
+                {0, 13, 0},
+                {0, 37, 8},
+                {0, 17, 6},
+                {0, 27, 3},
+                {0, 17, 17},
+                {0, 21, 16},
+                {10, 23, 6},
+                {0, 18, 0},
+                {0, 36, 37},
+                {0, 30, 32},
+                {0, 26, 11},
+                {10, 24, 10},
+                {0, 36, 31},
+                {0, 31, 0},
+                {0, 31, 6},
+                {0, 33, 38},
+                {0, 20, 31},
+                {10, 43, 21},
+                {10, 40, 26},
+                {10, 39, 0},
+                {10, 41, 29},
+                {10, 44, 28},
+                {10, 42, 0},
+                {0, 34, 10},
+                {0, 25, 34},
+                {0, 25, 0},
+                {0, 18, 26},
+                {0, 18, 0},
+                {0, 18, 0},
+                {0, 45, 31}
+            }
     Sub Main(args As String())
 Label1:
         AnsiConsole.Clear()
@@ -20,8 +70,6 @@ Label10:
         Dim NO_s = ""
         Dim VB_s = ""
         Dim CH_s = Chr(30)
-        Dim Q = -1
-        Dim V = 0
         Dim PR = V
         Dim [AS] = Q
         Dim SA = Q
@@ -38,14 +86,11 @@ Label10:
         Dim FS = 9
         Dim OC = V
         Dim RO = V
-        Dim AR = V
         Dim LP = Q
-        Dim TC = V
         Dim TMP = V
         Dim A = V
         Dim RF = Q
         Dim DF = Q
-        Dim TH = Q
         Dim RC = Q
         Dim H1 = Q
         Dim H2 = Q
@@ -53,7 +98,6 @@ Label10:
         Dim SC = Q
         Dim R = 1
         Dim Z = V
-        Dim L = V
         Dim I = 640
 
         Dim RM = 38
@@ -185,50 +229,6 @@ Label10:
         OB_sa(35) = "PORTABLE WINCH & ROPE" : OB_sa(36) = "CLOSET"
         OB_sa(38) = "DEEP HOLE" : OB_sa(39) = "HOLE" : OB_sa(40) = "HOLE IN WALL"
         OB_sa(41) = "AUTOMATIC HATCH" : OB_sa(37) = OB_sa(36)
-        Dim OB_(,) = {
-                {0, 0, 0},'there is no object 0
-                {10, 7, 0},
-                {0, 9, 1},
-                {0, 15, 36},
-                {0, 8, 0},
-                {0, 8, 0},
-                {0, 11, 34},
-                {0, 12, 4},
-                {0, 14, 4},
-                {0, 13, 29},
-                {0, 15, 35},
-                {0, 14, 2},
-                {0, 13, 0},
-                {0, 37, 8},
-                {0, 17, 6},
-                {0, 27, 3},
-                {0, 17, 17},
-                {0, 21, 16},
-                {10, 23, 6},
-                {0, 18, 0},
-                {0, 36, 37},
-                {0, 30, 32},
-                {0, 26, 11},
-                {10, 24, 10},
-                {0, 36, 31},
-                {0, 31, 0},
-                {0, 31, 6},
-                {0, 33, 38},
-                {0, 20, 31},
-                {10, 43, 21},
-                {10, 40, 26},
-                {10, 39, 0},
-                {10, 41, 29},
-                {10, 44, 28},
-                {10, 42, 0},
-                {0, 34, 10},
-                {0, 25, 34},
-                {0, 25, 0},
-                {0, 18, 26},
-                {0, 18, 0},
-                {0, 18, 0},
-                {0, 45, 31}
-            }
 
         Dim M0_s = "I don't see it here!"
         Dim M1_s = "I can't go that way!"
@@ -326,7 +326,7 @@ Label120:
 Label140:
         OB_(5, 2) = AR
         A_s = ""
-        TC =TC+1
+        TC = TC + 1
         If SO = 0 Then
             AnsiConsole.Markup($"There's enough air in the suit for {OL} moves")
             OL = OL - 1
@@ -425,11 +425,23 @@ Label700:
         '810 AS=0:AR=PR:OB(5,2)=AR:IFOB(6,2)=ROROB(6,2)=-1THENPRINT@704,"A warning light on the tracker is FLASHING!":RETURN:ELSERETURN
 
         Console.ReadLine()
-                End Sub
-    End If
+    End Sub
     Sub Gosub130()
         AnsiConsole.MarkupLine("
 ================================================================
 ")
+    End Sub
+    Sub Gosub780()
+        If TC < L * 120 Then
+            Return
+        Else
+            If TC = L * 120 Then
+                AnsiConsole.Markup("I just heard a LOUD tearing noise!")
+                TH = 0
+                AR = 11
+                OB_(5, 2) = 11
+                Return
+            End If
+        End If
     End Sub
 End Module
