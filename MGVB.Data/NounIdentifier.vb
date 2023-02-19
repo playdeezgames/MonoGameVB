@@ -39,8 +39,8 @@
     Hatch '38
     Book '39
     Jools '40
-    Noun41 '41
-    Noun42 '42
-    Noun43 '43
-    Noun44 '44
+    Explosive '41
+    Map '42
+    Diamond '43
+    Teleporter '44
 End Enum

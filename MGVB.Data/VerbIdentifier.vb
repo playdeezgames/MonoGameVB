@@ -8,7 +8,7 @@
     Connect '7
     Drop '8
     Suit '9
-    Shovel '10
+    Shoot '10
     Kill '11
     Say '12
     Inventory '13

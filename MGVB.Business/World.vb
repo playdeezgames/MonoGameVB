@@ -246,7 +246,7 @@
             {
                 .Name = "* DIAMOND *",
                 .Score = 10,
-                .Noun = NounIdentifier.Noun43,
+                .Noun = NounIdentifier.Diamond,
                 .Room = RoomIdentifier.Room21
             }
 
@@ -273,21 +273,21 @@
             {
                 .Name = "* ALIEN EXPLOSIVE *",
                 .Score = 10,
-                .Noun = NounIdentifier.Noun41,
+                .Noun = NounIdentifier.Explosive,
                 .Room = RoomIdentifier.Room29
             }
         Data.Objects(ObjectIdentifier.Object33) = New ObjectData With
             {
                 .Name = "* ALIEN TELEPORTER *",
                 .Score = 10,
-                .Noun = NounIdentifier.Noun44,
+                .Noun = NounIdentifier.Teleporter,
                 .Room = RoomIdentifier.Room28
             }
         Data.Objects(ObjectIdentifier.Object34) = New ObjectData With
             {
                 .Name = "* MAP OF UNIVERSE! *",
                 .Score = 10,
-                .Noun = NounIdentifier.Noun42,
+                .Noun = NounIdentifier.Map,
                 .Room = Nothing
             }
 
@@ -377,7 +377,7 @@
         Data.Verbs(VerbIdentifier.Suit) = "SUIT"
 
         '3030 VB$(10)="SHO":VB$(11)="KIL":VB$(12)="SAY":VB$(13)="I"
-        Data.Verbs(VerbIdentifier.Shovel) = "SHOVEL"
+        Data.Verbs(VerbIdentifier.Shoot) = "SHOOT"
         Data.Verbs(VerbIdentifier.Kill) = "KILL"
         Data.Verbs(VerbIdentifier.Say) = "SAY"
         Data.Verbs(VerbIdentifier.Inventory) = "INVENTORY"
@@ -478,10 +478,10 @@
         Data.Nouns(NounIdentifier.Jools) = "JOOLS"
 
         '2110 NO$(41)="EXP":NO$(42) = "MAP" : NO$(43) = "DIA" : NO$(44) = "TEL"
-        Data.Nouns(NounIdentifier.Noun41) = "EXPLOSIVE"
-        Data.Nouns(NounIdentifier.Noun42) = "MAP"
-        Data.Nouns(NounIdentifier.Noun43) = "DIAMOND"
-        Data.Nouns(NounIdentifier.Noun44) = "TELEPORTER"
+        Data.Nouns(NounIdentifier.Explosive) = "EXPLOSIVE"
+        Data.Nouns(NounIdentifier.Map) = "MAP"
+        Data.Nouns(NounIdentifier.Diamond) = "DIAMOND"
+        Data.Nouns(NounIdentifier.Teleporter) = "TELEPORTER"
     End Sub
 
     Private Sub InitializeRooms()
