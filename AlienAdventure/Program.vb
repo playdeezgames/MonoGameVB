@@ -324,9 +324,34 @@ Label120:
 
         Gosub130()
 Label140:
-        '140 OB(5,2)=AR:A$="":TC=TC+1:IFSO=0PRINT@960,"There's enough air in the suit for"OL"moves";:OL=OL-1:IFOL<0THENLP=-1:GOTO670
-        '150 IFAO=0THENIFSO=-1THEN670
-        '160 IFNOTRDTHENIFRD=TCTHENCLS:PRINT"BOOM!!!  The reactor EXPLODED!! There's NOTHING LEFT OF ME!!":PRINT:GOTO700:ELSEPRINT@896,RD-TC"Moves till reactor goes critical!";
+        OB_(5, 2) = AR
+        A_s = ""
+        TC =TC+1
+        If SO = 0 Then
+            AnsiConsole.Markup($"There's enough air in the suit for {OL} moves")
+            OL = OL - 1
+            If OL < 0 Then
+                LP = -1
+                GoTo Label670
+            End If
+        End If
+Label150:
+        If AO = 0 Then
+            If SO = -1 Then
+                GoTo Label670
+            End If
+        End If
+Label160:
+        If RD <> -1 Then
+            If RD = TC Then
+                AnsiConsole.Clear()
+                AnsiConsole.MarkupLine("BOOM!!!  The reactor EXPLODED!! There's NOTHING LEFT OF ME!!")
+                AnsiConsole.WriteLine()
+                GoTo Label700
+            Else
+                AnsiConsole.Markup($"{RD - TC} Moves till reactor goes critical!")
+            End If
+        End If
         '170 GOSUB780:IFHA=0ORSA=0THENSO=1:GOTO670:ELSEIFAR=RANDHA=-1THEN30:ELSEGOSUB750:PRINT@I,CH$;:INPUT"  ========> Tell me what to do";A$:IFPR=RANDAS=0ANDAR<>RTHENAR=R:OB(5,2)=AR:GOTO30:ELSEPR=R
         '180 PRINTCHR$(31);:FORA=1TOLEN(A$):IFMID$(A$,A,1)<>" "THENNEXTA:VB$=A$:NO_s="":ELSEVB$=LEFT$(A$,A-1):FORA=ATOLEN(A$):IFMID$(A$,A,1)=" "THENNEXTA:NO_s="":ELSENO_s=RIGHT$(A$,LEN(A$)-(A-1))
         '190 V=0:FORA=1TOVB:IFLEFT$(VB$,3)=VB_sa(A)THENV=A:ELSENEXTA
@@ -381,9 +406,11 @@ Label140:
         '650 IFB=-1THENFORA=1TO40STEP5:PRINT@54,"LOADING * ":INPUT#-1,OB(A,1),OB(A,2),OB(A+1,1),OB(A+1,2),OB(A+2,1),OB(A+2,2),OB(A+3,1),OB(A+3,2),OB(A+4,1),OB(A+4,2):NEXTA:GOTO30
         '655 IFB<>0THEN640:ELSEFORA=1TO40STEP5:PRINT@I,CH$"LOADING":INPUT#1,OB(A,1),OB(A,2),OB(A+1,1),OB(A+1,2),OB(A+2,1),OB(A+2,2),OB(A+3,1),OB(A+3,2),OB(A+4,1),OB(A+4,2):NEXTA:CLOSE:GOTO30
         '660 PRINTM2$:GOTO140
+Label670:
         '670 IFQ=0ORLP=0THEN700:ELSERF=0:CLS:PRINT"I'M IN A LOT OF TROUBLE!":GOSUB130:IFLPTHENIFDF=0THENPRINT"I FELL DOWN A DEEP HOLE!":ELSEIFSO=-1THENPRINT"THE AIR'S NOT BREATHABLE!":ELSEIFSO=0THENPRINT"AIR RAN OUT... CAN'T BREATHE!"
         '680 IFSO=1THENPRINT"ALIEN ATTACKS...":PRINT"IT'S TEARING ME TO SHREDS...":PRINT"AARRRRGH... ";
         '690 PRINT"I'M DEAD!!!"
+Label700:
         '700 GOSUB720
         '710 INPUT"Would you like to try this adventure again";A$:CLS:IFLEFT$(A$,1)="Y"THENRUN:ELSECLS:CLEAR50:END
         '720 PRINT"Out of a possible 100 points, ";:TS=0:FORA=1TOOB:IF(OB(A,2)=-1AND(R=31ORR=32))OROB(A,2)=31OROB(A,2)=32LETTS=TS+OB(A,0):NEXTA:ELSENEXTA
@@ -398,7 +425,8 @@ Label140:
         '810 AS=0:AR=PR:OB(5,2)=AR:IFOB(6,2)=ROROB(6,2)=-1THENPRINT@704,"A warning light on the tracker is FLASHING!":RETURN:ELSERETURN
 
         Console.ReadLine()
-    End Sub
+                End Sub
+    End If
     Sub Gosub130()
         AnsiConsole.MarkupLine("
 ================================================================
