@@ -440,7 +440,24 @@ Label230:
             End If
         End If
 Label240:
-        '240 IFV<7IFR=5AND(N=4ORV=4)ANDOB(1,2)=-1THENPRINT"SPCA HERE: YOU CAN'T TAKE THAT CAT OUT THE AIRLOCK!!":GOTO140:ELSEIFLP=0ANDV=1THEN670:ELSEIFRM(R,V-1)<>0THENR=RM(R,V-1):GOTO30:ELSEPRINTM1$:GOTO140
+        If V < 7 Then
+            If R = 5 And (N = 4 Or V = 4) And OB_(1, 2) = -1 Then
+                AnsiConsole.MarkupLine("SPCA HERE: YOU CAN'T TAKE THAT CAT OUT THE AIRLOCK!!")
+                GoTo Label140
+            End If
+        Else
+            If LP = 0 And V = 1 Then
+                GoTo Label670
+            Else
+                If RM_(R, V - 1) <> 0 Then
+                    R = RM_(R, V - 1)
+                    GoTo Label30
+                Else
+                    AnsiConsole.MarkupLine(M1_s)
+                    GoTo Label140
+                End If
+            End If
+        End If
         '250 IF(N=0AND((V<23AND(V<>12ANDV<>13))OR(V>25ANDV<28)ORV>30))THENIFNO_s=""THENPRINT"Please be more specific!":GOTO140:ELSEPRINT"I don't know what a '"NO_s"' is!":GOTO140
         '260 IFV<>19ANDV<>34THEN320:ELSEIFN<7THENV=N:GOTO240:ELSEIFN=19THENIFR<>30THEN20:ELSER=31:GOTO30
         '270 IFN=22THENIFR=18THENIFPD=0THENR=7:GOTO30:ELSEPRINT"OH NO! I can't reach it!":GOTO140:ELSE20
