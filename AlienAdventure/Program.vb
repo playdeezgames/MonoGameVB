@@ -352,7 +352,8 @@ Label160:
                 AnsiConsole.Markup($"{RD - TC} Moves till reactor goes critical!")
             End If
         End If
-        GOSUB780()
+Label170:
+        Gosub780()
         If HA = 0 Or SA = 0 Then
             SO = 1
             GoTo Label670
@@ -371,7 +372,27 @@ Label160:
                 End If
             End If
         End If
-        '180 PRINTCHR$(31);:FORA=1TOLEN(A$):IFMID$(A$,A,1)<>" "THENNEXTA:VB$=A$:NO_s="":ELSEVB$=LEFT$(A$,A-1):FORA=ATOLEN(A$):IFMID$(A$,A,1)=" "THENNEXTA:NO_s="":ELSENO_s=RIGHT$(A$,LEN(A$)-(A-1))
+Label180:
+        For A = 1 To Len(A_s)
+            If Mid(A_s, A, 1) = " "c Then
+                GoTo Label180A
+            End If
+        Next
+        VB_s = A_s
+        NO_s = ""
+        GoTo Label180Z
+Label180A:
+        VB_s = Left(A_s, A - 1)
+        For A = A To Len(A_s)
+            If Mid(A_s, A, 1) <> " "c Then
+                GoTo Label180C
+            End If
+        Next
+        NO_s = ""
+        GoTo Label180Z
+Label180C:
+        NO_s = Right(A_s, Len(A_s) - (A - 1))
+Label180Z:
         '190 V=0:FORA=1TOVB:IFLEFT$(VB$,3)=VB_sa(A)THENV=A:ELSENEXTA
         '200 N=0:FORA=1TONO:IFLEFT$(NO_s,3)=LEFT$(NO_sa(A),3)N=A:ELSENEXTA
         '210 IFN=0ANDV=0ANDVB$=""THENPRINTM2$:GOTO140
