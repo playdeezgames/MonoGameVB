@@ -393,9 +393,27 @@ Label180A:
 Label180C:
         NO_s = Right(A_s, Len(A_s) - (A - 1))
 Label180Z:
-        '190 V=0:FORA=1TOVB:IFLEFT$(VB$,3)=VB_sa(A)THENV=A:ELSENEXTA
-        '200 N=0:FORA=1TONO:IFLEFT$(NO_s,3)=LEFT$(NO_sa(A),3)N=A:ELSENEXTA
-        '210 IFN=0ANDV=0ANDVB$=""THENPRINTM2$:GOTO140
+Label190:
+        V=0
+        For A = 1 To VB
+            If Left(VB_s, 3) = VB_sa(A) Then
+                V = A
+                Exit For
+            End If
+        Next
+Label200:
+        N=0
+        For A = 1 To NO
+            If Left(NO_s, 3) = Left(NO_sa(A), 3) Then
+                N = A
+                Exit For
+            End If
+        Next
+Label210:
+        If N = 0 And V = 0 And VB_s = "" Then
+            AnsiConsole.MarkupLine(M2_s)
+            GoTo Label140
+        End If
         '220 IFV=0PRINT"I don't know how to '"VB$"' something":GOTO140
         '230 IFR=21THEN240:ELSEIFRC=0THENIFV<7THENIFOB(35,2)<>-1THENPRINTM6$:GOTO140:ELSE240:ELSEIFV=19ORV=20THENIFN<7THENPRINTM6$:GOTO140
         '240 IFV<7IFR=5AND(N=4ORV=4)ANDOB(1,2)=-1THENPRINT"SPCA HERE: YOU CAN'T TAKE THAT CAT OUT THE AIRLOCK!!":GOTO140:ELSEIFLP=0ANDV=1THEN670:ELSEIFRM(R,V-1)<>0THENR=RM(R,V-1):GOTO30:ELSEPRINTM1$:GOTO140
