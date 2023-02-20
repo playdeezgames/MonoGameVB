@@ -414,8 +414,32 @@ Label210:
             AnsiConsole.MarkupLine(M2_s)
             GoTo Label140
         End If
-        '220 IFV=0PRINT"I don't know how to '"VB$"' something":GOTO140
-        '230 IFR=21THEN240:ELSEIFRC=0THENIFV<7THENIFOB(35,2)<>-1THENPRINTM6$:GOTO140:ELSE240:ELSEIFV=19ORV=20THENIFN<7THENPRINTM6$:GOTO140
+Label220:
+        If V = 0 Then
+            AnsiConsole.MarkupLine($"I don't know how to '{VB_s}' something")
+            GoTo Label140
+        End If
+Label230:
+        If R <> 21 Then
+            If RC = 0 Then
+                If V < 7 Then
+                    If OB_(35, 2) <> -1 Then
+                        AnsiConsole.MarkupLine(M6_s)
+                        GoTo Label140
+                    Else
+                        GoTo Label240
+                    End If
+                Else
+                    If V = 19 Or V = 20 Then
+                        If N < 7 Then
+                            AnsiConsole.MarkupLine(M6_s)
+                            GoTo Label140
+                        End If
+                    End If
+                End If
+            End If
+        End If
+Label240:
         '240 IFV<7IFR=5AND(N=4ORV=4)ANDOB(1,2)=-1THENPRINT"SPCA HERE: YOU CAN'T TAKE THAT CAT OUT THE AIRLOCK!!":GOTO140:ELSEIFLP=0ANDV=1THEN670:ELSEIFRM(R,V-1)<>0THENR=RM(R,V-1):GOTO30:ELSEPRINTM1$:GOTO140
         '250 IF(N=0AND((V<23AND(V<>12ANDV<>13))OR(V>25ANDV<28)ORV>30))THENIFNO_s=""THENPRINT"Please be more specific!":GOTO140:ELSEPRINT"I don't know what a '"NO_s"' is!":GOTO140
         '260 IFV<>19ANDV<>34THEN320:ELSEIFN<7THENV=N:GOTO240:ELSEIFN=19THENIFR<>30THEN20:ELSER=31:GOTO30
