@@ -458,7 +458,16 @@ Label240:
                 End If
             End If
         End If
-        '250 IF(N=0AND((V<23AND(V<>12ANDV<>13))OR(V>25ANDV<28)ORV>30))THENIFNO_s=""THENPRINT"Please be more specific!":GOTO140:ELSEPRINT"I don't know what a '"NO_s"' is!":GOTO140
+Label250:
+        If (N = 0 And ((V < 23 And (V <> 12 And V <> 13)) Or (V > 25 And V < 28) Or V > 30)) Then
+            If NO_s = "" Then
+                AnsiConsole.MarkupLine("Please be more specific!")
+                GoTo Label140
+            Else
+                AnsiConsole.MarkupLine($"I don't know what a '{NO_s}' is!")
+                GoTo Label140
+            End If
+        End If
         '260 IFV<>19ANDV<>34THEN320:ELSEIFN<7THENV=N:GOTO240:ELSEIFN=19THENIFR<>30THEN20:ELSER=31:GOTO30
         '270 IFN=22THENIFR=18THENIFPD=0THENR=7:GOTO30:ELSEPRINT"OH NO! I can't reach it!":GOTO140:ELSE20
         '280 IFN=20THENIFR<>31THEN20:ELSEIFSL=0THENR=32:GOTO30:ELSE20
