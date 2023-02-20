@@ -8,6 +8,9 @@ Module Program
     Dim L As Integer = V
     Dim AR As Integer = V
     Dim TH As Integer = Q
+    Dim SA As Integer = Q
+    Dim HA As Integer = Q
+    Dim R As Integer = 1
     Dim OB_(,) As Integer = {
                 {0, 0, 0},'there is no object 0
                 {10, 7, 0},
@@ -72,8 +75,6 @@ Label10:
         Dim CH_s = Chr(30)
         Dim PR = V
         Dim [AS] = Q
-        Dim SA = Q
-        Dim HA = Q
         Dim N = V
         Dim AO = Q
         Dim TS = V
@@ -96,7 +97,6 @@ Label10:
         Dim H2 = Q
         Dim SL = Q
         Dim SC = Q
-        Dim R = 1
         Dim Z = V
         Dim I = 640
 
@@ -352,7 +352,25 @@ Label160:
                 AnsiConsole.Markup($"{RD - TC} Moves till reactor goes critical!")
             End If
         End If
-        '170 GOSUB780:IFHA=0ORSA=0THENSO=1:GOTO670:ELSEIFAR=RANDHA=-1THEN30:ELSEGOSUB750:PRINT@I,CH$;:INPUT"  ========> Tell me what to do";A$:IFPR=RANDAS=0ANDAR<>RTHENAR=R:OB(5,2)=AR:GOTO30:ELSEPR=R
+        GOSUB780()
+        If HA = 0 Or SA = 0 Then
+            SO = 1
+            GoTo Label670
+        Else
+            If AR = R And HA = -1 Then
+                GoTo Label30
+            Else
+                Gosub750()
+                A_s = AnsiConsole.Ask(Of String)("  ========> Tell me what to do")
+                If PR = R And [AS] = 0 And AR <> R Then
+                    AR = R
+                    OB_(5, 2) = AR
+                    GoTo Label30
+                Else
+                    PR = R
+                End If
+            End If
+        End If
         '180 PRINTCHR$(31);:FORA=1TOLEN(A$):IFMID$(A$,A,1)<>" "THENNEXTA:VB$=A$:NO_s="":ELSEVB$=LEFT$(A$,A-1):FORA=ATOLEN(A$):IFMID$(A$,A,1)=" "THENNEXTA:NO_s="":ELSENO_s=RIGHT$(A$,LEN(A$)-(A-1))
         '190 V=0:FORA=1TOVB:IFLEFT$(VB$,3)=VB_sa(A)THENV=A:ELSENEXTA
         '200 N=0:FORA=1TONO:IFLEFT$(NO_s,3)=LEFT$(NO_sa(A),3)N=A:ELSENEXTA
@@ -442,6 +460,23 @@ Label700:
                 OB_(5, 2) = 11
                 Return
             End If
+        End If
+    End Sub
+    Sub Gosub750()
+        If R = 29 Then
+            If SA <> -1 Then
+                SA = SA - 1
+                Return
+            Else
+                If AR = R Then
+                    HA = HA - 1
+                End If
+            End If
+        End If
+        If AR = R Then
+            HA = HA - 1
+        Else
+            HA = -1
         End If
     End Sub
 End Module
