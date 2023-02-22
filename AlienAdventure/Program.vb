@@ -1,3 +1,5 @@
+Imports System.Buffers
+Imports System.Drawing
 Imports System.Linq.Expressions
 Imports System.Reflection.Emit
 Imports Spectre.Console.Rendering
@@ -651,7 +653,29 @@ Label340:
             End If
         End If
 Label350:
-        '350 IFV=13THENA$="":PRINTM5$;:TMP=-1:FORA=1TOOB:IFOB(A,2)=-1THENIFLEN(A$)+4+LEN(OB_sa(A))>50THENPRINTA$:A$=OB_sa(A):NEXTA:GOTO140:ELSEA$=A$+"    "+OB_sa(A):TMP=TMP+1:NEXTA:GOTO140:ELSENEXTA:IFA$<>""PRINTA$:GOTO140
+        If V = 13 Then
+            A_s = ""
+            AnsiConsole.Markup(M5_s)
+            TMP = -1
+            For A = 1 To OB
+                If OB_(A, 2) = -1 Then
+                    If Len(A_s) + 4 + Len(OB_sa(A)) > 50 Then
+                        AnsiConsole.MarkupLine(A_s)
+                        A_s = OB_sa(A)
+                        Continue For
+                    Else
+                        A_s = A_s & "    " & OB_sa(A)
+                        TMP = TMP + 1
+                        Continue For
+                    End If
+                End If
+            Next
+            If A_s <> "" Then
+                AnsiConsole.MarkupLine(A_s)
+                GoTo Label140
+            End If
+        End If
+
         '360 IFV=13ANDTMPTHENPRINT"    NOTHING!":GOTO140
         '370 IFV=29THENGOSUB720:GOTO140:ELSEIFV=30THENQ=0:GOTO670
         '380 IFV=28IFR=4PRINT"LOOK around carefully...":GOTO140:ELSEIFTC<L*120PRINT"BEWARE of ALIENS... Be kind to animals...":GOTO140:ELSEPRINT"DESTROY THE SHIP! Know why? THINK!":GOTO140
@@ -688,29 +712,30 @@ Label350:
         '655 IFB<>0THEN640:ELSEFORA=1TO40STEP5:PRINT@I,CH$"LOADING":INPUT#1,OB(A,1),OB(A,2),OB(A+1,1),OB(A+1,2),OB(A+2,1),OB(A+2,2),OB(A+3,1),OB(A+3,2),OB(A+4,1),OB(A+4,2):NEXTA:CLOSE:GOTO30
         '660 PRINTM2$:GOTO140
 Label670:
-        '670 IFQ=0ORLP=0THEN700:ELSERF=0:CLS:PRINT"I'M IN A LOT OF TROUBLE!":GOSUB130:IFLPTHENIFDF=0THENPRINT"I FELL DOWN A DEEP HOLE!":ELSEIFSO=-1THENPRINT"THE AIR'S NOT BREATHABLE!":ELSEIFSO=0THENPRINT"AIR RAN OUT... CAN'T BREATHE!"
-        '680 IFSO=1THENPRINT"ALIEN ATTACKS...":PRINT"IT'S TEARING ME TO SHREDS...":PRINT"AARRRRGH... ";
-        '690 PRINT"I'M DEAD!!!"
+                '670 IFQ=0ORLP=0THEN700:ELSERF=0:CLS:PRINT"I'M IN A LOT OF TROUBLE!":GOSUB130:IFLPTHENIFDF=0THENPRINT"I FELL DOWN A DEEP HOLE!":ELSEIFSO=-1THENPRINT"THE AIR'S NOT BREATHABLE!":ELSEIFSO=0THENPRINT"AIR RAN OUT... CAN'T BREATHE!"
+                '680 IFSO=1THENPRINT"ALIEN ATTACKS...":PRINT"IT'S TEARING ME TO SHREDS...":PRINT"AARRRRGH... ";
+                '690 PRINT"I'M DEAD!!!"
 Label700:
-        '700 GOSUB720
-        '710 INPUT"Would you like to try this adventure again";A$:CLS:IFLEFT$(A$,1)="Y"THENRUN:ELSECLS:CLEAR50:END
-        '720 PRINT"Out of a possible 100 points, ";:TS=0:FORA=1TOOB:IF(OB(A,2)=-1AND(R=31ORR=32))OROB(A,2)=31OROB(A,2)=32LETTS=TS+OB(A,0):NEXTA:ELSENEXTA
-        '730 IF(R=31ORR=32)ANDLP=0ANDRE=0LETTS=TS+10
-        '740 PRINT"you have"TS:IFTS=100THENPRINT"FANTASTIC!! You've solved it ALL!":RETURN:ELSERETURN
-        '750 IFR=29THENIFSA<>-1THENSA=SA-1:RETURN:ELSEIFAR=RTHENHA=HA-1
-        '760 IFAR=RTHENHA=HA-1:ELSEHA=-1
-        '770 RETURN
-        '780 IFTC<L*120THENRETURN:ELSEIFTC=L*120THENPRINT@832,"I just heard a LOUD tearing noise!";:TH=0:AR=11:OB(5,2)=11:RETURN
-        '790 IFAS=-1ANDAR<>RTHENAR=RND(38):GOTO800:ELSE810
-        '800 IFAR=7OR(AR>17ANDAR<27)ORAR=28ORAR=29IFRND(4)=1THEN780:ELSEAR=0:RETURN:ELSEOB(5,2)=AR:FORA=0TO5:IFRM(R,A)<>ARTHENNEXTA:RETURN
-        '810 AS=0:AR=PR:OB(5,2)=AR:IFOB(6,2)=ROROB(6,2)=-1THENPRINT@704,"A warning light on the tracker is FLASHING!":RETURN:ELSERETURN
+                '700 GOSUB720
+                '710 INPUT"Would you like to try this adventure again";A$:CLS:IFLEFT$(A$,1)="Y"THENRUN:ELSECLS:CLEAR50:END
+                '720 PRINT"Out of a possible 100 points, ";:TS=0:FORA=1TOOB:IF(OB(A,2)=-1AND(R=31ORR=32))OROB(A,2)=31OROB(A,2)=32LETTS=TS+OB(A,0):NEXTA:ELSENEXTA
+                '730 IF(R=31ORR=32)ANDLP=0ANDRE=0LETTS=TS+10
+                '740 PRINT"you have"TS:IFTS=100THENPRINT"FANTASTIC!! You've solved it ALL!":RETURN:ELSERETURN
+                '750 IFR=29THENIFSA<>-1THENSA=SA-1:RETURN:ELSEIFAR=RTHENHA=HA-1
+                '760 IFAR=RTHENHA=HA-1:ELSEHA=-1
+                '770 RETURN
+                '780 IFTC<L*120THENRETURN:ELSEIFTC=L*120THENPRINT@832,"I just heard a LOUD tearing noise!";:TH=0:AR=11:OB(5,2)=11:RETURN
+                '790 IFAS=-1ANDAR<>RTHENAR=RND(38):GOTO800:ELSE810
+                '800 IFAR=7OR(AR>17ANDAR<27)ORAR=28ORAR=29IFRND(4)=1THEN780:ELSEAR=0:RETURN:ELSEOB(5,2)=AR:FORA=0TO5:IFRM(R,A)<>ARTHENNEXTA:RETURN
+                '810 AS=0:AR=PR:OB(5,2)=AR:IFOB(6,2)=ROROB(6,2)=-1THENPRINT@704,"A warning light on the tracker is FLASHING!":RETURN:ELSERETURN
 
-        Console.ReadLine()
+                Console.ReadLine()
     End Sub
     Sub Gosub130()
         AnsiConsole.MarkupLine("
 ================================================================
-")
+"
+)
     End Sub
     Sub Gosub780()
         If TC < L * 120 Then
