@@ -684,7 +684,19 @@ Label370:
                 GoTo Label670
             End If
         End If
-        '380 IFV=28IFR=4PRINT"LOOK around carefully...":GOTO140:ELSEIFTC<L*120PRINT"BEWARE of ALIENS... Be kind to animals...":GOTO140:ELSEPRINT"DESTROY THE SHIP! Know why? THINK!":GOTO140
+Label380:
+        If V = 28 Then
+            If R = 4 Then
+                AnsiConsole.MarkupLine("LOOK around carefully...")
+            Else
+                If TC < L * 120 Then
+                    AnsiConsole.MarkupLine("BEWARE of ALIENS... Be kind to animals...")
+                Else
+                    AnsiConsole.MarkupLine("DESTROY THE SHIP! Know why? THINK!")
+                End If
+            End If
+            GoTo Label140
+        End If
         '390 IFV<>17THEN460:ELSEIFN=8IFAR=ROROB(4,2)=RPRINT"I'M NOT GOING ANYWHERE NEAR IT!!":GOTO140:ELSE20:ELSEIFN=9IFR=1THENIFOB(1,2)=0PRINT"There's a cat in it!":OB(1,2)=R:GOTO140:ELSE400:ELSE20
         '400 IFN=10THENIFR=26THENIFOB(31,2)=0THENPRINT"It's holding a book":OB(31,2)=R:GOTO140:ELSE410:ELSE20:ELSEIFN=11THENIFOB(6,2)=-1THENPRINTN2$:GOTO140:ELSE20:ELSEIFN=13THENIFR=29THENOB(9,2)=0:OB(12,2)=R:OB(4,2)=R:SA=3:GOTO30:ELSE20
         '410 IFN=16THENIFR=31THENPRINT"It's marked: MAIN THRUSTERS":GOTO140:ELSE20:ELSEIFN=17THENIFR<>6ANDR<>17THEN20:ELSEIFR=6THENPRINT"It's marked: AIRLOCK RELEASE":GOTO140:ELSEPRINT"It's marked: RESTRICTED - DO NOT TOUCH":GOTO140
