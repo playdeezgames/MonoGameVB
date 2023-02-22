@@ -617,8 +617,40 @@ Label320:
                 End If
             End If
         End If
-        '330 IFV<>22ANDV<>32THEN350:ELSEIFN<>7ANDN<>11ANDN<>21ANDN<>23ANDN<>24ANDN<>26ANDN<>30ANDN<>33ANDN<>34AND(N<37ORN=38)THENPRINT"THAT'S IMPOSSIBLE!":GOTO140:ELSEFORA=1TOOB:IFOB(A,1)=NTHENIFOB(A,2)<>RTHENPRINTM0$:GOTO140:ELSE340:ELSENEXTA
-        '340 IF(OC+1)>5THENPRINTM4$:GOTO140:ELSEOC=OC+1:OB(A,2)=-1:IFN=7THENIFR=15THENTH=0:GOTO30:ELSE30:ELSE30
+Label330:
+        If V <> 22 And V <> 32 Then
+            GoTo Label350
+        Else
+            If N <> 7 And N <> 11 And N <> 21 And N <> 23 And N <> 24 And N <> 26 And N <> 30 And N <> 33 And N <> 34 And (N < 37 Or N = 38) Then
+                AnsiConsole.MarkupLine("THAT'S IMPOSSIBLE!")
+                GoTo Label140
+            Else
+                For A = 1 To OB
+                    If OB_(A, 1) = N Then
+                        If OB_(A, 2) <> R Then
+                            AnsiConsole.MarkupLine(M0_s)
+                            GoTo Label140
+                        Else
+Label340:
+                            If (OC + 1) > 5 Then
+                                AnsiConsole.MarkupLine(M4_s)
+                                GoTo Label140
+                            Else
+                                OC = OC + 1
+                                OB_(A, 2) = -1
+                                If N = 7 Then
+                                    If R = 15 Then
+                                        TH = 0
+                                    End If
+                                End If
+                                GoTo Label30
+                            End If
+                        End If
+                    End If
+                Next
+            End If
+        End If
+Label350:
         '350 IFV=13THENA$="":PRINTM5$;:TMP=-1:FORA=1TOOB:IFOB(A,2)=-1THENIFLEN(A$)+4+LEN(OB_sa(A))>50THENPRINTA$:A$=OB_sa(A):NEXTA:GOTO140:ELSEA$=A$+"    "+OB_sa(A):TMP=TMP+1:NEXTA:GOTO140:ELSENEXTA:IFA$<>""PRINTA$:GOTO140
         '360 IFV=13ANDTMPTHENPRINT"    NOTHING!":GOTO140
         '370 IFV=29THENGOSUB720:GOTO140:ELSEIFV=30THENQ=0:GOTO670
