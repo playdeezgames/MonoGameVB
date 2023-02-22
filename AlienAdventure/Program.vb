@@ -1,9 +1,3 @@
-Imports System.Buffers
-Imports System.Drawing
-Imports System.Linq.Expressions
-Imports System.Reflection.Emit
-Imports Spectre.Console.Rendering
-
 Module Program
     Dim Q As Integer = -1
     Dim V As Integer = 0
@@ -14,6 +8,10 @@ Module Program
     Dim SA As Integer = Q
     Dim HA As Integer = Q
     Dim R As Integer = 1
+    Dim OB As Integer = 41
+    Dim TS As Integer = V
+    Dim RE As Integer = Q
+    Dim LP As Integer = Q
     Dim OB_(,) As Integer = {
                 {0, 0, 0},'there is no object 0
                 {10, 7, 0},
@@ -80,17 +78,14 @@ Label10:
         Dim [AS] = Q
         Dim N = V
         Dim AO = Q
-        Dim TS = V
         Dim SO = Q
         Dim OL = V
         Dim PD = Q
         Dim PP = Q
-        Dim RE = Q
         Dim RD = Q
         Dim FS = 9
         Dim OC = V
         Dim RO = V
-        Dim LP = Q
         Dim TMP = V
         Dim A = V
         Dim RF = Q
@@ -211,7 +206,6 @@ Label10:
         VB_sa(30) = "QUI" : VB_sa(31) = "FIR" : VB_sa(32) = "TAK" : VB_sa(33) = "PUT"
         VB_sa(34) = "ENT"
 
-        Dim OB = 41
         Dim OB_sa(OB) As String
         OB_sa(1) = "CAT" : OB_sa(2) = "HYPER-SLEEP POD" : OB_sa(3) = "LADDER"
         OB_sa(4) = "SMALL ALIEN" : OB_sa(5) = "HUGE ALIEN" : OB_sa(6) = "TRACKER"
@@ -680,7 +674,16 @@ Label360:
             AnsiConsole.MarkupLine("    NOTHING!")
             GoTo Label140
         End If
-        '370 IFV=29THENGOSUB720:GOTO140:ELSEIFV=30THENQ=0:GOTO670
+Label370:
+        If V = 29 Then
+            Gosub720()
+            GoTo Label140
+        Else
+            If V = 30 Then
+                Q = 0
+                GoTo Label670
+            End If
+        End If
         '380 IFV=28IFR=4PRINT"LOOK around carefully...":GOTO140:ELSEIFTC<L*120PRINT"BEWARE of ALIENS... Be kind to animals...":GOTO140:ELSEPRINT"DESTROY THE SHIP! Know why? THINK!":GOTO140
         '390 IFV<>17THEN460:ELSEIFN=8IFAR=ROROB(4,2)=RPRINT"I'M NOT GOING ANYWHERE NEAR IT!!":GOTO140:ELSE20:ELSEIFN=9IFR=1THENIFOB(1,2)=0PRINT"There's a cat in it!":OB(1,2)=R:GOTO140:ELSE400:ELSE20
         '400 IFN=10THENIFR=26THENIFOB(31,2)=0THENPRINT"It's holding a book":OB(31,2)=R:GOTO140:ELSE410:ELSE20:ELSEIFN=11THENIFOB(6,2)=-1THENPRINTN2$:GOTO140:ELSE20:ELSEIFN=13THENIFR=29THENOB(9,2)=0:OB(12,2)=R:OB(4,2)=R:SA=3:GOTO30:ELSE20
@@ -715,30 +718,43 @@ Label360:
         '655 IFB<>0THEN640:ELSEFORA=1TO40STEP5:PRINT@I,CH$"LOADING":INPUT#1,OB(A,1),OB(A,2),OB(A+1,1),OB(A+1,2),OB(A+2,1),OB(A+2,2),OB(A+3,1),OB(A+3,2),OB(A+4,1),OB(A+4,2):NEXTA:CLOSE:GOTO30
         '660 PRINTM2$:GOTO140
 Label670:
-                '670 IFQ=0ORLP=0THEN700:ELSERF=0:CLS:PRINT"I'M IN A LOT OF TROUBLE!":GOSUB130:IFLPTHENIFDF=0THENPRINT"I FELL DOWN A DEEP HOLE!":ELSEIFSO=-1THENPRINT"THE AIR'S NOT BREATHABLE!":ELSEIFSO=0THENPRINT"AIR RAN OUT... CAN'T BREATHE!"
-                '680 IFSO=1THENPRINT"ALIEN ATTACKS...":PRINT"IT'S TEARING ME TO SHREDS...":PRINT"AARRRRGH... ";
-                '690 PRINT"I'M DEAD!!!"
+        '670 IFQ=0ORLP=0THEN700:ELSERF=0:CLS:PRINT"I'M IN A LOT OF TROUBLE!":GOSUB130:IFLPTHENIFDF=0THENPRINT"I FELL DOWN A DEEP HOLE!":ELSEIFSO=-1THENPRINT"THE AIR'S NOT BREATHABLE!":ELSEIFSO=0THENPRINT"AIR RAN OUT... CAN'T BREATHE!"
+        '680 IFSO=1THENPRINT"ALIEN ATTACKS...":PRINT"IT'S TEARING ME TO SHREDS...":PRINT"AARRRRGH... ";
+        '690 PRINT"I'M DEAD!!!"
 Label700:
-                '700 GOSUB720
-                '710 INPUT"Would you like to try this adventure again";A$:CLS:IFLEFT$(A$,1)="Y"THENRUN:ELSECLS:CLEAR50:END
-                '720 PRINT"Out of a possible 100 points, ";:TS=0:FORA=1TOOB:IF(OB(A,2)=-1AND(R=31ORR=32))OROB(A,2)=31OROB(A,2)=32LETTS=TS+OB(A,0):NEXTA:ELSENEXTA
-                '730 IF(R=31ORR=32)ANDLP=0ANDRE=0LETTS=TS+10
-                '740 PRINT"you have"TS:IFTS=100THENPRINT"FANTASTIC!! You've solved it ALL!":RETURN:ELSERETURN
-                '750 IFR=29THENIFSA<>-1THENSA=SA-1:RETURN:ELSEIFAR=RTHENHA=HA-1
-                '760 IFAR=RTHENHA=HA-1:ELSEHA=-1
-                '770 RETURN
-                '780 IFTC<L*120THENRETURN:ELSEIFTC=L*120THENPRINT@832,"I just heard a LOUD tearing noise!";:TH=0:AR=11:OB(5,2)=11:RETURN
-                '790 IFAS=-1ANDAR<>RTHENAR=RND(38):GOTO800:ELSE810
-                '800 IFAR=7OR(AR>17ANDAR<27)ORAR=28ORAR=29IFRND(4)=1THEN780:ELSEAR=0:RETURN:ELSEOB(5,2)=AR:FORA=0TO5:IFRM(R,A)<>ARTHENNEXTA:RETURN
-                '810 AS=0:AR=PR:OB(5,2)=AR:IFOB(6,2)=ROROB(6,2)=-1THENPRINT@704,"A warning light on the tracker is FLASHING!":RETURN:ELSERETURN
+        '700 GOSUB720
+        '710 INPUT"Would you like to try this adventure again";A$:CLS:IFLEFT$(A$,1)="Y"THENRUN:ELSECLS:CLEAR50:END
+        '750 IFR=29THENIFSA<>-1THENSA=SA-1:RETURN:ELSEIFAR=RTHENHA=HA-1
+        '760 IFAR=RTHENHA=HA-1:ELSEHA=-1
+        '770 RETURN
+        '780 IFTC<L*120THENRETURN:ELSEIFTC=L*120THENPRINT@832,"I just heard a LOUD tearing noise!";:TH=0:AR=11:OB(5,2)=11:RETURN
+        '790 IFAS=-1ANDAR<>RTHENAR=RND(38):GOTO800:ELSE810
+        '800 IFAR=7OR(AR>17ANDAR<27)ORAR=28ORAR=29IFRND(4)=1THEN780:ELSEAR=0:RETURN:ELSEOB(5,2)=AR:FORA=0TO5:IFRM(R,A)<>ARTHENNEXTA:RETURN
+        '810 AS=0:AR=PR:OB(5,2)=AR:IFOB(6,2)=ROROB(6,2)=-1THENPRINT@704,"A warning light on the tracker is FLASHING!":RETURN:ELSERETURN
 
-                Console.ReadLine()
+        Console.ReadLine()
     End Sub
     Sub Gosub130()
         AnsiConsole.MarkupLine("
 ================================================================
 "
 )
+    End Sub
+    Sub Gosub720()
+        AnsiConsole.Markup("Out of a possible 100 points, ")
+        TS = 0
+        For A = 1 To OB
+            If (OB_(A, 2) = -1 And (R = 31 Or R = 32)) Or OB_(A, 2) = 31 Or OB_(A, 2) = 32 Then
+                TS = TS + OB_(A, 0)
+            End If
+        Next
+        If (R = 31 Or R = 32) And LP = 0 And RE = 0 Then
+            TS = TS + 10
+        End If
+        AnsiConsole.MarkupLine($"you have{TS}")
+        If TS = 100 Then
+            AnsiConsole.MarkupLine("FANTASTIC!! You've solved it ALL!")
+        End If
     End Sub
     Sub Gosub780()
         If TC < L * 120 Then
