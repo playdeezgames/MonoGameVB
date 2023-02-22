@@ -675,8 +675,11 @@ Label350:
                 GoTo Label140
             End If
         End If
-
-        '360 IFV=13ANDTMPTHENPRINT"    NOTHING!":GOTO140
+Label360:
+        If V = 13 And TMP = -1 Then
+            AnsiConsole.MarkupLine("    NOTHING!")
+            GoTo Label140
+        End If
         '370 IFV=29THENGOSUB720:GOTO140:ELSEIFV=30THENQ=0:GOTO670
         '380 IFV=28IFR=4PRINT"LOOK around carefully...":GOTO140:ELSEIFTC<L*120PRINT"BEWARE of ALIENS... Be kind to animals...":GOTO140:ELSEPRINT"DESTROY THE SHIP! Know why? THINK!":GOTO140
         '390 IFV<>17THEN460:ELSEIFN=8IFAR=ROROB(4,2)=RPRINT"I'M NOT GOING ANYWHERE NEAR IT!!":GOTO140:ELSE20:ELSEIFN=9IFR=1THENIFOB(1,2)=0PRINT"There's a cat in it!":OB(1,2)=R:GOTO140:ELSE400:ELSE20
