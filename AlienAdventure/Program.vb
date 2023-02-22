@@ -1,3 +1,4 @@
+Imports System.Linq.Expressions
 Imports System.Reflection.Emit
 Imports Spectre.Console.Rendering
 
@@ -394,7 +395,7 @@ Label180C:
         NO_s = Right(A_s, Len(A_s) - (A - 1))
 Label180Z:
 Label190:
-        V=0
+        V = 0
         For A = 1 To VB
             If Left(VB_s, 3) = VB_sa(A) Then
                 V = A
@@ -402,7 +403,7 @@ Label190:
             End If
         Next
 Label200:
-        N=0
+        N = 0
         For A = 1 To NO
             If Left(NO_s, 3) = Left(NO_sa(A), 3) Then
                 N = A
@@ -486,13 +487,136 @@ Label260:
                 End If
             End If
         End If
-        '270 IFN=22THENIFR=18THENIFPD=0THENR=7:GOTO30:ELSEPRINT"OH NO! I can't reach it!":GOTO140:ELSE20
-        '280 IFN=20THENIFR<>31THEN20:ELSEIFSL=0THENR=32:GOTO30:ELSE20
-        '290 IFN=25THENIFR<>4ANDR<>34THEN20:ELSEIFR=4THENIFSC=0THENR=8:GOTO30:ELSE20:ELSER=38:GOTO30
-        '300 IFN=18THENIFR<>20ANDR<>26ANDR<>21ANDR<>11THEN20:ELSEIFR=20THENIFH1=0THENR=21:GOTO30:ELSE20:ELSEIFR=21THENIFH2=0THENR=28:GOTO30:ELSE20:ELSEIFR=11THENIFTH>-1THENR=12:GOTO30:ELSE20:ELSEIFRCTHENDF=0:GOTO670:ELSER=29:GOTO30
-        '310 IFN=31IFR=6ANDAO=0THENR=7:GOTO30:ELSE20:ELSEPRINTM2$:GOTO140
+Label270:
+        If N = 22 Then
+            If R = 18 Then
+                If PD = 0 Then
+                    R = 7
+                    GoTo Label30
+                Else
+                    AnsiConsole.MarkupLine("OH NO! I can't reach it!")
+                    GoTo Label140
+                End If
+            Else
+                GoTo Label20
+            End If
+        End If
+Label280:
+        If N = 20 Then
+            If R <> 31 Then
+                GoTo Label20
+            Else
+                If SL = 0 Then
+                    R = 32
+                    GoTo Label30
+                Else
+                    GoTo Label20
+                End If
+            End If
+        End If
+Label290:
+        If N = 25 Then
+            If R <> 4 And R <> 34 Then
+                GoTo Label20
+            Else
+                If R = 4 Then
+                    If SC = 0 Then
+                        R = 8
+                        GoTo Label30
+                    Else
+                        GoTo Label20
+                    End If
+                Else
+                    R = 38
+                    GoTo Label30
+                End If
+            End If
+        End If
+Label300:
+        If N = 18 Then
+            If R <> 20 And R <> 26 And R <> 21 And R <> 11 Then
+                GoTo Label20
+            Else
+                If R = 20 Then
+                    If H1 = 0 Then
+                        R = 21
+                        GoTo Label30
+                    Else GoTo Label20
+                    End If
+                Else
+                    If R = 21 Then
+                        If H2 = 0 Then
+                            R = 28
+                            GoTo Label30
+                        Else
+                            GoTo Label20
+                        End If
+                    Else
+                        If R = 11 Then
+                            If TH > -1 Then
+                                R = 12
+                                GoTo Label30
+                            Else
+                                GoTo Label20
+                            End If
+                        Else
+                            If RC <> 0 Then
+                                DF = 0
+                                GoTo Label670
+                            Else
+                                R = 29
+                                GoTo Label30
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
+Label310:
+        If N = 31 Then
+            If R = 6 And AO = 0 Then
+                R = 7
+                GoTo Label30
+            Else
+                GoTo Label20
+            End If
+        Else
+            AnsiConsole.MarkupLine(M2_s)
+            GoTo Label140
+        End If
 Label320:
-        '320 IFV=8ORV=33IFN=7ANDTH=0PRINTM8$:OB(1,2)=15:GOTO140:ELSEIFRO>6PRINTM9$:GOTO140:ELSEIFOB(21,2)=-1ANDSO=0ANDN=30LETSO=-1:OB(21,2)=R:OC=OC-1:GOTO30:ELSEFORA=1TOOB:IFOB(A,1)<>NNEXTA:ELSEIFOB(A,2)=-1LETOB(A,2)=R:OC=OC-1:GOTO30:ELSEPRINTM7$:GOTO140
+        If V = 8 Or V = 33 Then
+            If N = 7 And TH = 0 Then
+                AnsiConsole.MarkupLine(M8_s)
+                OB_(1, 2) = 15
+                GoTo Label140
+            Else
+                If RO > 6 Then
+                    AnsiConsole.MarkupLine(M9_s)
+                    GoTo Label140
+                Else
+                    If OB_(21, 2) = -1 And SO = 0 And N = 30 Then
+                        SO = -1
+                        OB_(21, 2) = R
+                        OC = OC - 1
+                        GoTo Label30
+                    Else
+                        For A = 1 To OB
+                            If OB_(A, 1) = N Then
+                                If OB_(A, 2) = -1 Then
+                                    OB_(A, 2) = R
+                                    OC = OC - 1
+                                    GoTo Label30
+                                Else
+                                    AnsiConsole.MarkupLine(M7_s)
+                                    GoTo Label140
+                                End If
+                            End If
+                        Next
+                    End If
+                End If
+            End If
+        End If
         '330 IFV<>22ANDV<>32THEN350:ELSEIFN<>7ANDN<>11ANDN<>21ANDN<>23ANDN<>24ANDN<>26ANDN<>30ANDN<>33ANDN<>34AND(N<37ORN=38)THENPRINT"THAT'S IMPOSSIBLE!":GOTO140:ELSEFORA=1TOOB:IFOB(A,1)=NTHENIFOB(A,2)<>RTHENPRINTM0$:GOTO140:ELSE340:ELSENEXTA
         '340 IF(OC+1)>5THENPRINTM4$:GOTO140:ELSEOC=OC+1:OB(A,2)=-1:IFN=7THENIFR=15THENTH=0:GOTO30:ELSE30:ELSE30
         '350 IFV=13THENA$="":PRINTM5$;:TMP=-1:FORA=1TOOB:IFOB(A,2)=-1THENIFLEN(A$)+4+LEN(OB_sa(A))>50THENPRINTA$:A$=OB_sa(A):NEXTA:GOTO140:ELSEA$=A$+"    "+OB_sa(A):TMP=TMP+1:NEXTA:GOTO140:ELSENEXTA:IFA$<>""PRINTA$:GOTO140
