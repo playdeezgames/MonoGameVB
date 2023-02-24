@@ -1,3 +1,6 @@
+Imports System.Drawing
+Imports System.Linq.Expressions
+
 Module Program
     Dim Q As Integer = -1
     Dim V As Integer = 0
@@ -697,24 +700,315 @@ Label380:
             End If
             GoTo Label140
         End If
-        '390 IFV<>17THEN460:ELSEIFN=8IFAR=ROROB(4,2)=RPRINT"I'M NOT GOING ANYWHERE NEAR IT!!":GOTO140:ELSE20:ELSEIFN=9IFR=1THENIFOB(1,2)=0PRINT"There's a cat in it!":OB(1,2)=R:GOTO140:ELSE400:ELSE20
-        '400 IFN=10THENIFR=26THENIFOB(31,2)=0THENPRINT"It's holding a book":OB(31,2)=R:GOTO140:ELSE410:ELSE20:ELSEIFN=11THENIFOB(6,2)=-1THENPRINTN2$:GOTO140:ELSE20:ELSEIFN=13THENIFR=29THENOB(9,2)=0:OB(12,2)=R:OB(4,2)=R:SA=3:GOTO30:ELSE20
-        '410 IFN=16THENIFR=31THENPRINT"It's marked: MAIN THRUSTERS":GOTO140:ELSE20:ELSEIFN=17THENIFR<>6ANDR<>17THEN20:ELSEIFR=6THENPRINT"It's marked: AIRLOCK RELEASE":GOTO140:ELSEPRINT"It's marked: RESTRICTED - DO NOT TOUCH":GOTO140
-        '420 IFN=21THENIFOB(17,2)=-1OROB(17,2)=RTHENPRINT"It has"FS"shots left in it":GOTO140:ELSE20:ELSEIFN=22THENIFR=7THENPRINT"There's a button marked: PLATFORM CONTROL":GOTO140:ELSE20
-        '430 IFN=27IFR=3PRINT"I SEE AN ALIEN PLANET OUTSIDE":GOTO140:ELSE20:ELSEIFN=37IFOB(13,2)=-1PRINT"IT'S MARKED: STARTER CELLS":GOTO140:ELSE20:ELSEIFN=39IFOB(31,2)=-1PRINT"THE COVER SAYS: TELEPORTER MANUAL":GOTO140:ELSE20
-        '440 IFN=36THENIFR<>37ANDR<>31THEN20:ELSEIFR=37THENPRINT"COMPUTER: It's been nice knowing you!":GOTO140:ELSEIFPP=0THENPRINT"There's a large lever":GOTO140:ELSEPRINT"There's an empty slot next to a large lever":GOTO140
-        '450 IFN=35IFRC=0OROB(35,2)=-1PRINT"There is a box on the end marked:":PRINT"''START WINCH'' to wind up rope":GOTO140:ELSE20:ELSEIFN=42IFOB(34,2)=-1PRINT"OH WOW! It's a "OB_sa(34):GOTO140:ELSE20:ELSEPRINTN0$:GOTO140
-        '460 IFV=23THENIFR=4THENOB(37,2)=R:GOTO30:ELSE30
-        '470 IFV=7THENIFN=35THENIFOB(35,2)=RTHENIFRCTHENRC=0:PRINT"OK":GOTO140:ELSEPRINT"It's already connected!":GOTO140:ELSEIFOB(35,2)=-1PRINT"I should put the winch down first":GOTO140:ELSE20
-        '480 IFV=7THENIFN=37THENIFOB(13,2)<>-1THEN20:ELSEIFR=31THENPRINT"OK":PP=0:OC=OC-1:OB(13,2)=0:GOTO140:ELSE20:ELSEPRINTM2$:GOTO140
-        '490 IF(V=8ORV=33)IFN=35ANDRC=0THENRC=-1:PRINT"OK - HEY! It wound back into the winch!!":GOTO140:ELSEPRINTM7$:GOTO140
-        '500 IFV=21THENIFN=6ANDR=7THENR=18:GOTO30:ELSEPRINT"OK":GOTO140
-        '510 IFV=12THENPRINT"OK:  "NO_s:GOTO140
-        '520 IFV=20THENIFN=28THENIFR=25THENR=26:GOTO30:ELSE20:ELSEPRINT"I DON'T WANT TO!":GOTO140
-        '530 IFV=9THENIFN=5THENIFSOTHENIFOB(21,2)=-1THENSO=0:OB(21,2)=-1:PRINT"OK":GOTO140:ELSE20:ELSEPRINT"I'm already wearing it!":GOTO140:ELSEPRINTM2$:GOTO140
-        '540 IFV<>14ANDV<>16THEN570:ELSEIFN<>17THENPRINTN1$:GOTO140:ELSEIFR=17THENIFRE=0THENPRINTN1$"!":GOTO30:ELSEPRINT"OH NO! A panel lit up and reads: REACTOR CRITICAL IN"25*L"MOVES!!":RD=TC+(25*L)+1:RE=0:GOTO140
+Label390:
+        If V <> 17 Then
+            GoTo Label460
+        Else
+            If N = 8 Then
+                If AR = R Or OB_(4, 2) = R Then
+                    AnsiConsole.MarkupLine("I'M NOT GOING ANYWHERE NEAR IT!!")
+                    GoTo Label140
+                Else
+                    GoTo Label20
+                End If
+            Else
+                If N = 9 Then
+                    If R = 1 Then
+                        If OB_(1, 2) = 0 Then
+                            AnsiConsole.MarkupLine("There's a cat in it!")
+                            OB_(1, 2) = R
+                            GoTo Label140
+                        Else
+                            GoTo Label400
+                        End If
+                    Else
+                        GoTo Label20
+                    End If
+                End If
+            End If
+        End If
+Label400:
+        If N = 10 Then
+            If R = 26 Then
+                If OB_(31, 2) = 0 Then
+                    AnsiConsole.MarkupLine("It's holding a book")
+                    OB_(31, 2) = R
+                    GoTo Label140
+                Else
+                    GoTo Label410
+                End If
+            Else
+                GoTo Label20
+            End If
+        Else
+            If N = 11 Then
+                If OB_(6, 2) = -1 Then
+                    AnsiConsole.MarkupLine(N2_s)
+                    GoTo Label140
+                Else
+                    GoTo Label20
+                End If
+            Else
+                If N = 13 Then
+                    If R = 29 Then
+                        OB_(9, 2) = 0
+                        OB_(12, 2) = R
+                        OB_(4, 2) = R
+                        SA = 3
+                        GoTo Label30
+                    Else
+                        GoTo Label20
+                    End If
+                End If
+            End If
+        End If
+Label410:
+        If N = 16 Then
+            If R = 31 Then
+                AnsiConsole.MarkupLine("It's marked: MAIN THRUSTERS")
+                GoTo Label140
+            Else
+                GoTo Label20
+            End If
+        Else
+            If N = 17 Then
+                If R <> 6 And R <> 17 Then
+                    GoTo Label20
+                Else
+                    If R = 6 Then
+                        AnsiConsole.MarkupLine("It's marked: AIRLOCK RELEASE")
+                        GoTo Label140
+                    Else
+                        AnsiConsole.MarkupLine("It's marked: RESTRICTED - DO NOT TOUCH")
+                        GoTo Label140
+                    End If
+                End If
+            End If
+        End If
+Label420:
+        If N = 21 Then
+            If OB_(17, 2) = -1 Or OB_(17, 2) = R Then
+                AnsiConsole.MarkupLine($"It has {FS} shots left in it")
+                GoTo Label140
+            Else
+                GoTo Label20
+            End If
+        Else
+            If N = 22 Then
+                If R = 7 Then
+                    AnsiConsole.MarkupLine("There's a button marked: PLATFORM CONTROL")
+                    GoTo Label140
+                Else
+                    GoTo Label20
+                End If
+            End If
+        End If
+Label430:
+        If N = 27 Then
+            If R = 3 Then
+                AnsiConsole.MarkupLine("I SEE AN ALIEN PLANET OUTSIDE")
+                GoTo Label140
+            Else
+                GoTo Label20
+            End If
+        Else
+            If N = 37 Then
+                If OB_(13, 2) = -1 Then
+                    AnsiConsole.MarkupLine("IT'S MARKED: STARTER CELLS")
+                    GoTo Label140
+                Else
+                    GoTo Label20
+                End If
+            Else
+                If N = 39 Then
+                    If OB_(31, 2) = -1 Then
+                        AnsiConsole.MarkupLine("THE COVER SAYS: TELEPORTER MANUAL")
+                        GoTo Label140
+                    End If
+                Else
+                    GoTo Label20
+                End If
+            End If
+        End If
+Label440:
+        If N = 36 Then
+            If R <> 37 And R <> 31 Then
+                GoTo Label20
+            Else
+                If R = 37 Then
+                    AnsiConsole.MarkupLine("COMPUTER: It's been nice knowing you!")
+                    GoTo Label140
+                Else
+                    If PP = 0 Then
+                        AnsiConsole.MarkupLine("There's a large lever")
+                        GoTo Label140
+                    Else
+                        AnsiConsole.MarkupLine("There's an empty slot next to a large lever")
+                        GoTo Label140
+                    End If
+                End If
+            End If
+        End If
+Label450:
+        If N = 35 Then
+            If RC = 0 Or OB_(35, 2) = -1 Then
+                AnsiConsole.MarkupLine("There is a box on the end marked:")
+                AnsiConsole.MarkupLine("''START WINCH'' to wind up rope")
+                GoTo Label140
+            Else
+                GoTo Label20
+            End If
+        Else
+            If N = 42 Then
+                If OB_(34, 2) = -1 Then
+                    AnsiConsole.MarkupLine($"OH WOW! It's a {OB_sa(34)}")
+                    GoTo Label140
+                Else
+                    GoTo Label20
+                End If
+            Else
+                AnsiConsole.MarkupLine(N0_s)
+                GoTo Label140
+            End If
+        End If
+Label460:
+        If V = 23 Then
+            If R = 4 Then
+                OB_(37, 2) = R
+                GoTo Label30
+            Else
+                GoTo Label30
+            End If
+        End If
+Label470:
+        If V = 7 Then
+            If N = 35 Then
+                If OB_(35, 2) = R Then
+                    If RC = -1 Then
+                        RC = 0
+                        AnsiConsole.MarkupLine("OK")
+                        GoTo Label140
+                    Else
+                        AnsiConsole.MarkupLine("It's already connected!")
+                        GoTo Label140
+                    End If
+                Else
+                    If OB_(35, 2) = -1 Then
+                        AnsiConsole.MarkupLine("I should put the winch down first")
+                        GoTo Label140
+                    Else
+                        GoTo Label20
+                    End If
+                End If
+            End If
+        End If
+Label480:
+        If V = 7 Then
+            If N = 37 Then
+                If OB_(13, 2) <> -1 Then
+                    GoTo Label20
+                Else
+                    If R = 31 Then
+                        AnsiConsole.MarkupLine("OK")
+                        PP = 0
+                        OC = OC - 1
+                        OB_(13, 2) = 0
+                        GoTo Label140
+                    Else
+                        GoTo Label20
+                    End If
+                End If
+            Else
+                AnsiConsole.MarkupLine(M2_s)
+                GoTo Label140
+            End If
+        End If
+Label490:
+        If (V = 8 Or V = 33) Then
+            If N = 35 And RC = 0 Then
+                RC = -1
+                AnsiConsole.MarkupLine("OK - HEY! It wound back into the winch!!")
+                GoTo Label140
+            Else
+                AnsiConsole.MarkupLine(M7_s)
+                GoTo Label140
+            End If
+        End If
+Label500:
+        If V = 21 Then
+            If N = 6 And R = 7 Then
+                R = 18
+                GoTo Label30
+            Else
+                AnsiConsole.MarkupLine("OK")
+                GoTo Label140
+            End If
+        End If
+Label510:
+        If V = 12 Then
+            AnsiConsole.MarkupLine($"OK:  {NO_s}")
+            GoTo Label140
+        End If
+Label520:
+        If V = 20 Then
+            If N = 28 Then
+                If R = 25 Then
+                    R = 26
+                    GoTo Label30
+                Else
+                    GoTo Label20
+                End If
+            Else
+                AnsiConsole.MarkupLine("I DON'T WANT TO!")
+                GoTo Label140
+            End If
+        End If
+Label530:
+        If V = 9 Then
+            If N = 5 Then
+                If SO = -1 Then
+                    If OB_(21, 2) = -1 Then
+                        SO = 0
+                        OB_(21, 2) = -1
+                        AnsiConsole.MarkupLine("OK")
+                        GoTo Label140
+                    Else
+                        GoTo Label20
+                    End If
+                Else
+                    AnsiConsole.MarkupLine("I'm already wearing it!")
+                    GoTo Label140
+                End If
+            Else
+                AnsiConsole.MarkupLine(M2_s)
+                GoTo Label140
+            End If
+        End If
+Label540:
+        If V <> 14 And V <> 16 Then
+            GoTo Label570
+        Else
+            If N <> 17 Then
+                AnsiConsole.MarkupLine(N1_s)
+                GoTo Label140
+            Else
+                If R = 17 Then
+                    If RE = 0 Then
+                        AnsiConsole.MarkupLine($"{N1_s}!")
+                        GoTo Label30
+                    Else
+                        AnsiConsole.MarkupLine($"OH NO! A panel lit up and reads: REACTOR CRITICAL IN {25 * L} MOVES!!")
+                        RD = TC + (25 * L) + 1
+                        RE = 0
+                        GoTo Label140
+                    End If
+                End If
+            End If
+        End If
+Label550:
         '550 IFR=6THENIFOB(25,2)=6THENAO=-1:RM(6,2)=5:OB(26,2)=6:OB(25,2)=0:GOTO30:ELSEOB(25,2)=6:OB(26,2)=0:AO=0:RM(6,2)=0:GOTO30
         '560 IFR=7THENIFPD=0THENPD=-1:RM(7,2)=6:RM(7,3)=0:RM(18,2)=0:GOTO30:ELSEPD=0:RM(7,2)=0:RM(7,3)=18:RM(18,2)=7:GOTO30:ELSEPRINT"OK":GOTO140
+Label570:
         '570 IFV=26IFN<>18PRINT"Yeah man, GROOVY!!":GOTO140:ELSEIFOB(27,2)<>-1PRINT"Bare-handed?!":GOTO140:ELSEIFR=20LETOB(39,2)=R:H1=0:GOTO30:ELSEIFR<>21PRINTN0$:GOTO140:ELSEOB(19,2)=21:H2=0:IFOB(29,2)=21LETOB(29,2)=28:GOTO30:ELSE30
         '580 IFV=27THENIFRC=0THENIFOB(35,2)<>RTHENR=OB(35,2):GOTO30:ELSEPRINT"Ropes already wound up":GOTO140:ELSEPRINT"The rope isn't connected to my suit!":GOTO140
         '590 IFV=18IFN<>20ANDN<>25ANDN<>39PRINT"I CAN'T":GOTO140:ELSEIFN=39IFOB(31,2)<>-1THEN20:ELSEOB(34,2)=R:PRINT"I see a map":GOTO140:ELSEIFN=20IFR=31LETSL=0:PRINT"OK":GOTO140:ELSE20:ELSEIFR=4LETSC=0:PRINT"OK":GOTO140:ELSE20
@@ -769,7 +1063,7 @@ Label700:
         End If
     End Sub
     Sub Gosub780()
-        If TC < L * 120 Then
+        If TC <L * 120 Then
             Return
         Else
             If TC = L * 120 Then
