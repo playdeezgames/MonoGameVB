@@ -1006,8 +1006,40 @@ Label540:
             End If
         End If
 Label550:
-        '550 IFR=6THENIFOB(25,2)=6THENAO=-1:RM(6,2)=5:OB(26,2)=6:OB(25,2)=0:GOTO30:ELSEOB(25,2)=6:OB(26,2)=0:AO=0:RM(6,2)=0:GOTO30
-        '560 IFR=7THENIFPD=0THENPD=-1:RM(7,2)=6:RM(7,3)=0:RM(18,2)=0:GOTO30:ELSEPD=0:RM(7,2)=0:RM(7,3)=18:RM(18,2)=7:GOTO30:ELSEPRINT"OK":GOTO140
+        If R = 6 Then
+            If OB_(25, 2) = 6 Then
+                AO = -1
+                RM_(6, 2) = 5
+                OB_(26, 2) = 6
+                OB_(25, 2) = 0
+                GoTo Label30
+            Else
+                OB_(25, 2) = 6
+                OB_(26, 2) = 0
+                AO = 0
+                RM_(6, 2) = 0
+                GoTo Label30
+            End If
+        End If
+Label560:
+        If R = 7 Then
+            If PD = 0 Then
+                PD = -1
+                RM_(7, 2) = 6
+                RM_(7, 3) = 0
+                RM_(18, 2) = 0
+                GoTo Label30
+            Else
+                PD = 0
+                RM_(7, 2) = 0
+                RM_(7, 3) = 18
+                RM_(18, 2) = 7
+                GoTo Label30
+            End If
+        Else
+            AnsiConsole.MarkupLine("OK")
+            GoTo Label140
+        End If
 Label570:
         '570 IFV=26IFN<>18PRINT"Yeah man, GROOVY!!":GOTO140:ELSEIFOB(27,2)<>-1PRINT"Bare-handed?!":GOTO140:ELSEIFR=20LETOB(39,2)=R:H1=0:GOTO30:ELSEIFR<>21PRINTN0$:GOTO140:ELSEOB(19,2)=21:H2=0:IFOB(29,2)=21LETOB(29,2)=28:GOTO30:ELSE30
         '580 IFV=27THENIFRC=0THENIFOB(35,2)<>RTHENR=OB(35,2):GOTO30:ELSEPRINT"Ropes already wound up":GOTO140:ELSEPRINT"The rope isn't connected to my suit!":GOTO140
