@@ -264,7 +264,7 @@ Label20:
 
 Label30:
         AnsiConsole.Clear()
-        AnsiConsole.MarkupLine($"I'm{RM_s(R)}")
+        AnsiConsole.MarkupLine($"I'm {RM_s(R)}")
         A_s = ""
 
 Label40:
