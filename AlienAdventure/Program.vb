@@ -1073,9 +1073,55 @@ Label570:
             End If
         End If
 Label580:
-        '580 IFV=27THENIFRC=0THENIFOB(35,2)<>RTHENR=OB(35,2):GOTO30:ELSEPRINT"Ropes already wound up":GOTO140:ELSEPRINT"The rope isn't connected to my suit!":GOTO140
+        If V = 27 Then
+            If RC = 0 Then
+                If OB_(35, 2) <> R Then
+                    R = OB_(35, 2)
+                    GoTo Label30
+                Else
+                    AnsiConsole.MarkupLine("Ropes already wound up")
+                    GoTo Label140
+                End If
+            Else
+                AnsiConsole.MarkupLine("The rope isn't connected to my suit!")
+                GoTo Label140
+            End If
+        End If
 Label590:
-        '590 IFV=18IFN<>20ANDN<>25ANDN<>39PRINT"I CAN'T":GOTO140:ELSEIFN=39IFOB(31,2)<>-1THEN20:ELSEOB(34,2)=R:PRINT"I see a map":GOTO140:ELSEIFN=20IFR=31LETSL=0:PRINT"OK":GOTO140:ELSE20:ELSEIFR=4LETSC=0:PRINT"OK":GOTO140:ELSE20
+        If V = 18 Then
+            If N <> 20 And N <> 25 And N <> 39 Then
+                AnsiConsole.MarkupLine("I CAN'T")
+                GoTo Label140
+            Else
+                If N = 39 Then
+                    If OB_(31, 2) <> -1 Then
+                        GoTo Label20
+                    Else
+                        OB_(34, 2) = R
+                        AnsiConsole.MarkupLine("I see a map")
+                        GoTo Label140
+                    End If
+                Else
+                    If N = 20 Then
+                        If R = 31 Then
+                            SL = 0
+                            AnsiConsole.MarkupLine("OK")
+                            GoTo Label140
+                        Else
+                            GoTo Label20
+                        End If
+                    Else
+                        If R = 4 Then
+                            SC = 0
+                            AnsiConsole.MarkupLine("OK")
+                            GoTo Label140
+                        Else
+                            GoTo Label20
+                        End If
+                    End If
+                End If
+            End If
+        End If
 Label600:
         '600 IFV=31ORV=10ORV=11THENIFFS=0THENPRINT"IT'S EMPTY!":GOTO140:ELSEIFOB(17,2)<>-1PRINTM7$:GOTO140:ELSEFS=FS-1:IFAS=0THENAR=0:AS=-1:HA=-1:OB(5,2)=0:GOTO30:ELSEPRINT"OK":GOTO140
 Label610:
