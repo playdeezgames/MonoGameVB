@@ -1041,19 +1041,62 @@ Label560:
             GoTo Label140
         End If
 Label570:
-        '570 IFV=26IFN<>18PRINT"Yeah man, GROOVY!!":GOTO140:ELSEIFOB(27,2)<>-1PRINT"Bare-handed?!":GOTO140:ELSEIFR=20LETOB(39,2)=R:H1=0:GOTO30:ELSEIFR<>21PRINTN0$:GOTO140:ELSEOB(19,2)=21:H2=0:IFOB(29,2)=21LETOB(29,2)=28:GOTO30:ELSE30
+        If V = 26 Then
+            If N <> 18 Then
+                AnsiConsole.MarkupLine("Yeah man, GROOVY!!")
+                GoTo Label140
+            Else
+                If OB_(27, 2) <> -1 Then
+                    AnsiConsole.MarkupLine("Bare-handed?!")
+                    GoTo Label140
+                Else
+                    If R = 20 Then
+                        OB_(39, 2) = R
+                        H1 = 0
+                        GoTo Label30
+                    Else
+                        If R <> 21 Then
+                            AnsiConsole.MarkupLine(N0_s)
+                            GoTo Label140
+                        Else
+                            OB_(19, 2) = 21
+                            H2 = 0
+                            If OB_(29, 2) = 21 Then
+                                OB_(29, 2) = 28
+                                GoTo Label30
+                            Else
+                                GoTo Label30
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
+Label580:
         '580 IFV=27THENIFRC=0THENIFOB(35,2)<>RTHENR=OB(35,2):GOTO30:ELSEPRINT"Ropes already wound up":GOTO140:ELSEPRINT"The rope isn't connected to my suit!":GOTO140
+Label590:
         '590 IFV=18IFN<>20ANDN<>25ANDN<>39PRINT"I CAN'T":GOTO140:ELSEIFN=39IFOB(31,2)<>-1THEN20:ELSEOB(34,2)=R:PRINT"I see a map":GOTO140:ELSEIFN=20IFR=31LETSL=0:PRINT"OK":GOTO140:ELSE20:ELSEIFR=4LETSC=0:PRINT"OK":GOTO140:ELSE20
+Label600:
         '600 IFV=31ORV=10ORV=11THENIFFS=0THENPRINT"IT'S EMPTY!":GOTO140:ELSEIFOB(17,2)<>-1PRINTM7$:GOTO140:ELSEFS=FS-1:IFAS=0THENAR=0:AS=-1:HA=-1:OB(5,2)=0:GOTO30:ELSEPRINT"OK":GOTO140
+Label610:
         '610 IFV=15THENIFN<>16THENPRINTN1$:GOTO140:ELSEIFR<>31THEN20:ELSEIFPPTHENPRINTN1$:GOTO140:ELSEIFAR=31ORAR=32LETSO=1:GOTO670:ELSEPRINT@640,"Shuttle leaves airlock, autopilot sets course for home":LP=0:GOTO670
+Label620:
         '620 IFV<>24THEN640:ELSEPRINT@I,CH$"To Cassette or Disk";:INPUTA$:B=(LEFT$(A$,1)="C"):IFB=-1THENPRINT#-1,AS,AO,SO,OL,PD,PP,RE,RD,FS,OC,AR,SA,HA,TC,TH,RC,H1,H2,SL,SC,R,RM(5,3),RM(6,2),RM(7,2),RM(7,3),RM(18,2),L
+Label625:
         '625 IFB=0THENOPEN"O",1,"ALIEN/DAT":PRINT#1,AS,AO,SO,OL,PD,PP,RE,RD,FS,OC,AR,SA,HA,TC,TH,RC,H1,H2,SL,SC,R,RM(5,3),RM(6,2),RM(7,2),RM(7,3),RM(18,2),L
+Label630:
         '630 IFB=-1THENFORA=1TO40STEP5:PRINT#-1,OB(A,1),OB(A,2),OB(A+1,1),OB(A+1,2),OB(A+2,1),OB(A+2,2),OB(A+3,1),OB(A+3,2),OB(A+4,1),OB(A+4,2):NEXTA:PRINT"OK":GOTO140
+Label635:
         '635 IFB<>0THEN620:ELSEFORA=1TO40STEP5:PRINT#1,OB(A,1),OB(A,2),OB(A+1,1),OB(A+1,2),OB(A+2,1),OB(A+2,2),OB(A+3,1),OB(A+3,2),OB(A+4,1),OB(A+4,2):NEXTA:CLOSE:PRINT"OK":GOTO140
+Label640:
         '640 IFV<>25THEN660:ELSEPRINT@I,CH$"From Cassette or Disk";:INPUTA$:B=(LEFT$(A$,1)="C"):IFB=-1THENINPUT#-1,AS,AO,SO,OL,PD,PP,RE,RD,FS,OC,AR,SA,HA,TC,TH,RC,H1,H2,SL,SC,R,RM(5,3),RM(6,2),RM(7,2),RM(7,3),RM(18,2),L
+Label645:
         '645 IFB=0THENOPEN"I",1,"ALIEN/DAT":INPUT#1,AS,AO,SO,OL,PD,PP,RE,RD,FS,OC,AR,SA,HA,TC,TH,RC,H1,H2,SL,SC,R,RM(5,3),RM(6,2),RM(7,2),RM(7,3),RM(18,2),L
+Label650:
         '650 IFB=-1THENFORA=1TO40STEP5:PRINT@54,"LOADING * ":INPUT#-1,OB(A,1),OB(A,2),OB(A+1,1),OB(A+1,2),OB(A+2,1),OB(A+2,2),OB(A+3,1),OB(A+3,2),OB(A+4,1),OB(A+4,2):NEXTA:GOTO30
+Label655:
         '655 IFB<>0THEN640:ELSEFORA=1TO40STEP5:PRINT@I,CH$"LOADING":INPUT#1,OB(A,1),OB(A,2),OB(A+1,1),OB(A+1,2),OB(A+2,1),OB(A+2,2),OB(A+3,1),OB(A+3,2),OB(A+4,1),OB(A+4,2):NEXTA:CLOSE:GOTO30
+Label660:
         '660 PRINTM2$:GOTO140
 Label670:
         '670 IFQ=0ORLP=0THEN700:ELSERF=0:CLS:PRINT"I'M IN A LOT OF TROUBLE!":GOSUB130:IFLPTHENIFDF=0THENPRINT"I FELL DOWN A DEEP HOLE!":ELSEIFSO=-1THENPRINT"THE AIR'S NOT BREATHABLE!":ELSEIFSO=0THENPRINT"AIR RAN OUT... CAN'T BREATHE!"
@@ -1062,6 +1105,7 @@ Label670:
 Label700:
         '700 GOSUB720
         '710 INPUT"Would you like to try this adventure again";A$:CLS:IFLEFT$(A$,1)="Y"THENRUN:ELSECLS:CLEAR50:END
+
         '750 IFR=29THENIFSA<>-1THENSA=SA-1:RETURN:ELSEIFAR=RTHENHA=HA-1
         '760 IFAR=RTHENHA=HA-1:ELSEHA=-1
         '770 RETURN
