@@ -1147,8 +1147,38 @@ Label600:
             End If
         End If
 Label610:
-        '610 IFV=15THENIFN<>16THENPRINTN1$:GOTO140:ELSEIFR<>31THEN20:ELSEIFPPTHENPRINTN1$:GOTO140:ELSEIFAR=31ORAR=32LETSO=1:GOTO670:ELSEPRINT@640,"Shuttle leaves airlock, autopilot sets course for home":LP=0:GOTO670
+        If V = 15 Then
+            If N <> 16 Then
+                AnsiConsole.MarkupLine(N1_s)
+                GoTo Label140
+            Else
+                If R <> 31 Then
+                    GoTo Label20
+                Else
+                    If PP = -1 Then
+                        AnsiConsole.MarkupLine(N1_s)
+                        GoTo Label140
+                    Else
+                        If AR = 31 Or AR = 32 Then
+                            SO = 1
+                            GoTo Label670
+                        Else
+                            AnsiConsole.MarkupLine("Shuttle leaves airlock, autopilot sets course for home")
+                            LP = 0
+                            GoTo Label670
+                        End If
+                    End If
+                End If
+            End If
+        End If
+
 Label620:
+        If V <> 24 Then
+            GoTo Label640
+        Else
+            AnsiConsole.MarkupLine("TODO: Saving!")
+            GoTo Label140
+        End If
         '620 IFV<>24THEN640:ELSEPRINT@I,CH$"To Cassette or Disk";:INPUTA$:B=(LEFT$(A$,1)="C"):IFB=-1THENPRINT#-1,AS,AO,SO,OL,PD,PP,RE,RD,FS,OC,AR,SA,HA,TC,TH,RC,H1,H2,SL,SC,R,RM(5,3),RM(6,2),RM(7,2),RM(7,3),RM(18,2),L
 Label625:
         '625 IFB=0THENOPEN"O",1,"ALIEN/DAT":PRINT#1,AS,AO,SO,OL,PD,PP,RE,RD,FS,OC,AR,SA,HA,TC,TH,RC,H1,H2,SL,SC,R,RM(5,3),RM(6,2),RM(7,2),RM(7,3),RM(18,2),L
@@ -1156,7 +1186,14 @@ Label630:
         '630 IFB=-1THENFORA=1TO40STEP5:PRINT#-1,OB(A,1),OB(A,2),OB(A+1,1),OB(A+1,2),OB(A+2,1),OB(A+2,2),OB(A+3,1),OB(A+3,2),OB(A+4,1),OB(A+4,2):NEXTA:PRINT"OK":GOTO140
 Label635:
         '635 IFB<>0THEN620:ELSEFORA=1TO40STEP5:PRINT#1,OB(A,1),OB(A,2),OB(A+1,1),OB(A+1,2),OB(A+2,1),OB(A+2,2),OB(A+3,1),OB(A+3,2),OB(A+4,1),OB(A+4,2):NEXTA:CLOSE:PRINT"OK":GOTO140
+
 Label640:
+        If V <> 25 Then
+            GoTo Label660
+        Else
+            AnsiConsole.MarkupLine("TODO: Loading!")
+            GoTo Label140
+        End If
         '640 IFV<>25THEN660:ELSEPRINT@I,CH$"From Cassette or Disk";:INPUTA$:B=(LEFT$(A$,1)="C"):IFB=-1THENINPUT#-1,AS,AO,SO,OL,PD,PP,RE,RD,FS,OC,AR,SA,HA,TC,TH,RC,H1,H2,SL,SC,R,RM(5,3),RM(6,2),RM(7,2),RM(7,3),RM(18,2),L
 Label645:
         '645 IFB=0THENOPEN"I",1,"ALIEN/DAT":INPUT#1,AS,AO,SO,OL,PD,PP,RE,RD,FS,OC,AR,SA,HA,TC,TH,RC,H1,H2,SL,SC,R,RM(5,3),RM(6,2),RM(7,2),RM(7,3),RM(18,2),L
@@ -1164,25 +1201,45 @@ Label650:
         '650 IFB=-1THENFORA=1TO40STEP5:PRINT@54,"LOADING * ":INPUT#-1,OB(A,1),OB(A,2),OB(A+1,1),OB(A+1,2),OB(A+2,1),OB(A+2,2),OB(A+3,1),OB(A+3,2),OB(A+4,1),OB(A+4,2):NEXTA:GOTO30
 Label655:
         '655 IFB<>0THEN640:ELSEFORA=1TO40STEP5:PRINT@I,CH$"LOADING":INPUT#1,OB(A,1),OB(A,2),OB(A+1,1),OB(A+1,2),OB(A+2,1),OB(A+2,2),OB(A+3,1),OB(A+3,2),OB(A+4,1),OB(A+4,2):NEXTA:CLOSE:GOTO30
+
 Label660:
-        '660 PRINTM2$:GOTO140
+        AnsiConsole.MarkupLine(M2_s)
+        GoTo Label140
 Label670:
-        '670 IFQ=0ORLP=0THEN700:ELSERF=0:CLS:PRINT"I'M IN A LOT OF TROUBLE!":GOSUB130:IFLPTHENIFDF=0THENPRINT"I FELL DOWN A DEEP HOLE!":ELSEIFSO=-1THENPRINT"THE AIR'S NOT BREATHABLE!":ELSEIFSO=0THENPRINT"AIR RAN OUT... CAN'T BREATHE!"
-        '680 IFSO=1THENPRINT"ALIEN ATTACKS...":PRINT"IT'S TEARING ME TO SHREDS...":PRINT"AARRRRGH... ";
-        '690 PRINT"I'M DEAD!!!"
+        If Q = 0 Or LP = 0 Then
+            GoTo Label700
+        Else
+            RF = 0
+            AnsiConsole.Clear()
+            AnsiConsole.MarkupLine("I'M IN A LOT OF TROUBLE!")
+            Gosub130()
+            If LP = -1 Then
+                If DF = 0 Then
+                    AnsiConsole.MarkupLine("I FELL DOWN A DEEP HOLE!")
+                Else
+                    If SO = -1 Then
+                        AnsiConsole.MarkupLine("THE AIR'S NOT BREATHABLE!")
+                    Else
+                        If SO = 0 Then
+                            AnsiConsole.MarkupLine("AIR RAN OUT... CAN'T BREATHE!")
+                        End If
+                    End If
+                End If
+            End If
+        End If
+Label680:
+        If SO = 1 Then
+            AnsiConsole.MarkupLine("ALIEN ATTACKS...")
+            AnsiConsole.MarkupLine("IT'S TEARING ME TO SHREDS...")
+            AnsiConsole.MarkupLine("AARRRRGH... ")
+        End If
+Label690:
+        AnsiConsole.MarkupLine("I'M DEAD!!!")
 Label700:
-        '700 GOSUB720
+        Gosub720()
+Label710:
+        AnsiConsole.MarkupLine("TODO: Play again prompt")
         '710 INPUT"Would you like to try this adventure again";A$:CLS:IFLEFT$(A$,1)="Y"THENRUN:ELSECLS:CLEAR50:END
-
-        '750 IFR=29THENIFSA<>-1THENSA=SA-1:RETURN:ELSEIFAR=RTHENHA=HA-1
-        '760 IFAR=RTHENHA=HA-1:ELSEHA=-1
-        '770 RETURN
-        '780 IFTC<L*120THENRETURN:ELSEIFTC=L*120THENPRINT@832,"I just heard a LOUD tearing noise!";:TH=0:AR=11:OB(5,2)=11:RETURN
-        '790 IFAS=-1ANDAR<>RTHENAR=RND(38):GOTO800:ELSE810
-        '800 IFAR=7OR(AR>17ANDAR<27)ORAR=28ORAR=29IFRND(4)=1THEN780:ELSEAR=0:RETURN:ELSEOB(5,2)=AR:FORA=0TO5:IFRM(R,A)<>ARTHENNEXTA:RETURN
-        '810 AS=0:AR=PR:OB(5,2)=AR:IFOB(6,2)=ROROB(6,2)=-1THENPRINT@704,"A warning light on the tracker is FLASHING!":RETURN:ELSERETURN
-
-        Console.ReadLine()
     End Sub
     Sub Gosub130()
         AnsiConsole.MarkupLine("
@@ -1218,6 +1275,9 @@ Label700:
                 Return
             End If
         End If
+        '790 IFAS=-1ANDAR<>RTHENAR=RND(38):GOTO800:ELSE810
+        '800 IFAR=7OR(AR>17ANDAR<27)ORAR=28ORAR=29IFRND(4)=1THEN780:ELSEAR=0:RETURN:ELSEOB(5,2)=AR:FORA=0TO5:IFRM(R,A)<>ARTHENNEXTA:RETURN
+        '810 AS=0:AR=PR:OB(5,2)=AR:IFOB(6,2)=ROROB(6,2)=-1THENPRINT@704,"A warning light on the tracker is FLASHING!":RETURN:ELSERETURN
     End Sub
     Sub Gosub750()
         If R = 29 Then
