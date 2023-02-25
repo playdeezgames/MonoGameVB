@@ -256,6 +256,8 @@ Label10:
                 OL = 240
         End Select
 
+        GoTo Label30
+
 Label20:
         AnsiConsole.MarkupLine(M3_s)
         GoTo Label140
@@ -445,17 +447,17 @@ Label240:
             If R = 5 And (N = 4 Or V = 4) And OB_(1, 2) = -1 Then
                 AnsiConsole.MarkupLine("SPCA HERE: YOU CAN'T TAKE THAT CAT OUT THE AIRLOCK!!")
                 GoTo Label140
-            End If
-        Else
-            If LP = 0 And V = 1 Then
-                GoTo Label670
             Else
-                If RM_(R, V - 1) <> 0 Then
-                    R = RM_(R, V - 1)
-                    GoTo Label30
+                If LP = 0 And V = 1 Then
+                    GoTo Label670
                 Else
-                    AnsiConsole.MarkupLine(M1_s)
-                    GoTo Label140
+                    If RM_(R, V - 1) <> 0 Then
+                        R = RM_(R, V - 1)
+                        GoTo Label30
+                    Else
+                        AnsiConsole.MarkupLine(M1_s)
+                        GoTo Label140
+                    End If
                 End If
             End If
         End If
