@@ -15,6 +15,8 @@ Module Program
     Dim TS As Integer = V
     Dim RE As Integer = Q
     Dim LP As Integer = Q
+    Dim [AS] As Integer = Q
+    Dim PR As Integer = V
     Dim OB_(,) As Integer = {
                 {0, 0, 0},'there is no object 0
                 {10, 7, 0},
@@ -59,6 +61,48 @@ Module Program
                 {0, 18, 0},
                 {0, 45, 31}
             }
+    Dim RM_(,) As Integer =
+            {
+                {0, 0, 0, 0, 0, 0},'RM=0 is blank, because we start with 1!
+                {0, 0, 0, 9, 0, 0},
+                {0, 0, 27, 0, 0, 0},
+                {27, 0, 0, 0, 0, 0},
+                {0, 0, 0, 27, 0, 0},
+                {0, 9, 0, 6, 0, 0},
+                {0, 0, 5, 0, 0, 0},
+                {0, 0, 6, 0, 0, 0},
+                {0, 0, 0, 4, 0, 0},
+                {5, 10, 1, 0, 35, 0},
+                {9, 11, 0, 0, 0, 0},
+                {10, 0, 0, 0, 0, 0},
+                {12, 12, 13, 12, 0, 11},
+                {13, 13, 13, 12, 13, 14},
+                {0, 14, 12, 0, 13, 15},
+                {0, 0, 0, 0, 14, 0},
+                {0, 33, 17, 0, 0, 0},
+                {34, 0, 0, 16, 0, 0},
+                {19, 0, 0, 0, 0, 0},
+                {20, 18, 19, 19, 0, 0},
+                {22, 19, 20, 20, 0, 0},
+                {0, 0, 0, 0, 20, 0},
+                {0, 20, 23, 0, 0, 0},
+                {0, 0, 24, 22, 0, 0},
+                {25, 0, 0, 23, 0, 0},
+                {0, 24, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 25},
+                {37, 3, 4, 2, 36, 35},
+                {0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0},
+                {33, 0, 0, 0, 0, 0},
+                {30, 0, 0, 0, 0, 0},
+                {0, 0, 0, 31, 0, 0},
+                {16, 30, 0, 0, 0, 36},
+                {0, 17, 0, 0, 0, 0},
+                {0, 0, 0, 0, 27, 9},
+                {0, 0, 0, 0, 33, 27},
+                {0, 27, 0, 0, 0, 0},
+                {0, 0, 0, 34, 0, 0}
+            }
     Sub Main(args As String())
 Label1:
         AnsiConsole.Clear()
@@ -78,7 +122,6 @@ Label10:
         Dim VB_s = ""
         Dim CH_s = Chr(30)
         Dim PR = V
-        Dim [AS] = Q
         Dim N = V
         Dim AO = Q
         Dim SO = Q
@@ -141,48 +184,6 @@ Label10:
         RM_s(36) = "in the B/C deck crawlway"
         RM_s(37) = "in the MAIN COMPUTER room"
         RM_s(38) = "in a UTILITY closet"
-        Dim RM_(,) As Integer =
-            {
-                {0, 0, 0, 0, 0, 0},'RM=0 is blank, because we start with 1!
-                {0, 0, 0, 9, 0, 0},
-                {0, 0, 27, 0, 0, 0},
-                {27, 0, 0, 0, 0, 0},
-                {0, 0, 0, 27, 0, 0},
-                {0, 9, 0, 6, 0, 0},
-                {0, 0, 5, 0, 0, 0},
-                {0, 0, 6, 0, 0, 0},
-                {0, 0, 0, 4, 0, 0},
-                {5, 10, 1, 0, 35, 0},
-                {9, 11, 0, 0, 0, 0},
-                {10, 0, 0, 0, 0, 0},
-                {12, 12, 13, 12, 0, 11},
-                {13, 13, 13, 12, 13, 14},
-                {0, 14, 12, 0, 13, 15},
-                {0, 0, 0, 0, 14, 0},
-                {0, 33, 17, 0, 0, 0},
-                {34, 0, 0, 16, 0, 0},
-                {19, 0, 0, 0, 0, 0},
-                {20, 18, 19, 19, 0, 0},
-                {22, 19, 20, 20, 0, 0},
-                {0, 0, 0, 0, 20, 0},
-                {0, 20, 23, 0, 0, 0},
-                {0, 0, 24, 22, 0, 0},
-                {25, 0, 0, 23, 0, 0},
-                {0, 24, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 25},
-                {37, 3, 4, 2, 36, 35},
-                {0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0},
-                {33, 0, 0, 0, 0, 0},
-                {30, 0, 0, 0, 0, 0},
-                {0, 0, 0, 31, 0, 0},
-                {16, 30, 0, 0, 0, 36},
-                {0, 17, 0, 0, 0, 0},
-                {0, 0, 0, 0, 27, 9},
-                {0, 0, 0, 0, 33, 27},
-                {0, 27, 0, 0, 0, 0},
-                {0, 0, 0, 34, 0, 0}
-            }
 
         Dim NO = 44
         Dim NO_sa(NO) As String
@@ -1275,9 +1276,40 @@ Label710:
                 Return
             End If
         End If
-        '790 IFAS=-1ANDAR<>RTHENAR=RND(38):GOTO800:ELSE810
-        '800 IFAR=7OR(AR>17ANDAR<27)ORAR=28ORAR=29IFRND(4)=1THEN780:ELSEAR=0:RETURN:ELSEOB(5,2)=AR:FORA=0TO5:IFRM(R,A)<>ARTHENNEXTA:RETURN
-        '810 AS=0:AR=PR:OB(5,2)=AR:IFOB(6,2)=ROROB(6,2)=-1THENPRINT@704,"A warning light on the tracker is FLASHING!":RETURN:ELSERETURN
+        If [AS] = -1 And AR <> R Then
+            AR = Rnd(38)
+            GoTo label800
+        Else
+            GoTo label810
+        End If
+Label800:
+        If AR = 7 Or (AR > 17 And AR < 27) Or AR = 28 Or AR = 29 Then
+            If Rnd(4) = 1 Then
+                Gosub780()
+                Return
+            Else
+                AR = 0
+                Return
+            End If
+        Else
+            OB_(5, 2) = AR
+            For A = 0 To 5
+                If RM_(R, A) = AR Then
+                    GoTo Label810
+                End If
+            Next
+            Return
+        End If
+Label810:
+        [AS] = 0
+        AR = PR
+        OB_(5, 2) = AR
+        If OB_(6, 2) = R Or OB_(6, 2) = -1 Then
+            AnsiConsole.MarkupLine("A warning light on the tracker is FLASHING!")
+            Return
+        Else
+            Return
+        End If
     End Sub
     Sub Gosub750()
         If R = 29 Then
@@ -1296,4 +1328,8 @@ Label710:
             HA = -1
         End If
     End Sub
+    Dim random As New Random()
+    Function Rnd(v As Integer) As Integer
+        Return random.Next(v) + 1
+    End Function
 End Module
