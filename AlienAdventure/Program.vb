@@ -1123,7 +1123,29 @@ Label590:
             End If
         End If
 Label600:
-        '600 IFV=31ORV=10ORV=11THENIFFS=0THENPRINT"IT'S EMPTY!":GOTO140:ELSEIFOB(17,2)<>-1PRINTM7$:GOTO140:ELSEFS=FS-1:IFAS=0THENAR=0:AS=-1:HA=-1:OB(5,2)=0:GOTO30:ELSEPRINT"OK":GOTO140
+        If V = 31 Or V = 10 Or V = 11 Then
+            If FS = 0 Then
+                AnsiConsole.MarkupLine("IT'S EMPTY!")
+                GoTo Label140
+            Else
+                If OB_(17, 2) <> -1 Then
+                    AnsiConsole.MarkupLine(M7_s)
+                    GoTo Label140
+                Else
+                    FS = FS - 1
+                    If [AS] = 0 Then
+                        AR = 0
+                        [AS] = -1
+                        HA = -1
+                        OB_(5, 2) = 0
+                        GoTo Label30
+                    Else
+                        AnsiConsole.MarkupLine("OK")
+                        GoTo Label140
+                    End If
+                End If
+            End If
+        End If
 Label610:
         '610 IFV=15THENIFN<>16THENPRINTN1$:GOTO140:ELSEIFR<>31THEN20:ELSEIFPPTHENPRINTN1$:GOTO140:ELSEIFAR=31ORAR=32LETSO=1:GOTO670:ELSEPRINT@640,"Shuttle leaves airlock, autopilot sets course for home":LP=0:GOTO670
 Label620:
